@@ -1,9 +1,10 @@
 
 #include <stdio.h>
-#include <stdint.h>
+#include <sdl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <ctype.h>
 #include "../stagedata.h"
 #include "../maprecord.h"
 #include "extractstages.h"
@@ -39,6 +40,19 @@ const char *npcsetnames[] =
 	"red", "miza", "dr", "almo2", "kings", "hell",
 	"press", "priest", "ballos", "island", NULL
 };
+
+int strcasecmp(const char *s1, const char *s2)
+{
+	unsigned char c1,c2;
+	do {
+		c1 = *s1++;
+		c2 = *s2++;
+		c1 = (unsigned char) tolower( (unsigned char) c1);
+		c2 = (unsigned char) tolower( (unsigned char) c2);
+	}
+	while((c1 == c2) && (c1 != '\0'));
+	return (int) c1-c2;
+}
 
 int find_index(const char *fname, const char *list[])
 {

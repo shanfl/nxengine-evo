@@ -2,14 +2,14 @@
 #include <SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
+#include <sdl.h>
 #include <string.h>
 #include "settings.h"
 #include "input.h"
 #include "common/stat.h"
 
 
-const char *setfilename = "settings.dat";
+const char *setfilename = "Config.dat";
 const uint32_t SETTINGS_VERSION = ( ( '1' << 24 ) + ( 'S' << 16 ) + ( 'X' << 8 ) + 'N' );		// serves as both a version and magic
 
 Settings normal_settings;

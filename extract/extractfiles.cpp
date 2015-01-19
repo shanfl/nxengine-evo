@@ -1,10 +1,12 @@
 
 #include <stdio.h>
-#include <stdint.h>
+#include <sdl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-
+#ifdef _MSC_VER
+#include <direct.h>
+#endif
 #ifdef __MINGW32__
 	#include <io.h>
 #endif
@@ -112,7 +114,7 @@ void createdir(const char *fname)
 	{
 		*ptr = 0;
 		
-		#ifdef __MINGW32__
+		#if defined(__MINGW32__) || defined(_MSC_VER)
 			mkdir(dir);
 		#else
 			mkdir(dir, S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);

@@ -1,7 +1,7 @@
 
 #include "nx.h"
 #include <stdarg.h>
-#include <unistd.h>
+////#include <unistd.h>
 #include "graphics/safemode.h"
 //#include "main.h"
 #include "game.h"
@@ -298,9 +298,15 @@ bool freshstart;
 	// so we know the initial screen resolution.
 	settings_load();
 	
-	if (Graphics::init(settings->resolution)) { staterr("Failed to initialize graphics."); return 1; }
+	if (Graphics::init(settings->resolution)) 
+	{ 
+		staterr("Failed to initialize graphics."); return 1; 
+	}
 	Graphics::SetFullscreen(settings->fullscreen);
-	if (font_init()) { staterr("Failed to load font."); return 1; }
+	if (font_init())
+	{
+		staterr("Failed to load font."); return 1; 
+	}
 	
 	
 	if (check_data_exists())

@@ -1,7 +1,7 @@
 #ifndef __MISC_H_
 #define __MISC_H_
 #include <cstdio>
-#include <stdint.h>
+#include <sdl.h>
 
 uint16_t fgeti(FILE *fp);
 uint32_t fgetl(FILE *fp);
@@ -36,5 +36,7 @@ void fresetboolean(void);
 char fbooleanread(FILE *fp);
 void fbooleanwrite(char bit, FILE *fp);
 void fbooleanflush(FILE *fp);
-
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
 #endif

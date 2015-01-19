@@ -23,6 +23,7 @@ using namespace Sprites;
 #include "map.h"
 #include "object.h"
 #include "siflib/sif.h"
+#include "autogen/objnames.h"
 
 #define MAX_DEBUG_MARKS		80
 static struct
@@ -214,7 +215,7 @@ void debug_clear()
 void c------------------------------() {}
 */
 
-extern char *object_names[];	// from autogen'd objnames.cpp
+//extern char *object_names[];	// from autogen'd objnames.cpp
 
 // given an object type returns the name of the object e.g. "OBJ_TOROKO"
 const char *DescribeObjectType(int type)

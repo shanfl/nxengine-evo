@@ -1,0 +1,1 @@
+extern const char *object_names[];

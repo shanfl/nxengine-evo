@@ -2,19 +2,19 @@
 #ifndef _BASICS_H
 #define _BASICS_H
 
-#include <stdint.h>
+#include <sdl.h>
 
 #ifdef __clang__
 	#define MAXPATHLEN	256
 #else
-	#include <sys/param.h>	// MAXPATHLEN
+	//#include <sys/param.h>	// MAXPATHLEN
 #endif
 
 #ifndef PATH_MAX
 	#define PATH_MAX	259
 #endif
 
-
+#define MAXPATHLEN	256
 
 void stat(const char *fmt, ...);
 void staterr(const char *fmt, ...);

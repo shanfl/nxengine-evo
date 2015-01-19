@@ -3,7 +3,7 @@
 #define _SIFLOADER_H
 
 #include <vector>
-#include <stdint.h>
+#include <sdl.h>
 
 #define SIF_MAX_GROUPS			255		// limitation of SECTION_GROUPS format
 

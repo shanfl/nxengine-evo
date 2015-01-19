@@ -1,6 +1,6 @@
 #ifndef _BUFIO_H
 #define _BUFIO_H
-#include <stdint.h>
+#include <sdl.h>
 #include "stat.h"
 
 static uint8_t read_U8(const uint8_t **data, const uint8_t *data_end)

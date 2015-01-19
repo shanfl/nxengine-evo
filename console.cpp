@@ -25,6 +25,20 @@ using namespace Graphics;
 
 #define Respond		console.Print
 
+int strcasecmp(const char *s1, const char *s2)
+{
+	unsigned char c1,c2;
+	do {
+		c1 = *s1++;
+		c2 = *s2++;
+		c1 = (unsigned char) tolower( (unsigned char) c1);
+		c2 = (unsigned char) tolower( (unsigned char) c2);
+	}
+	while((c1 == c2) && (c1 != '\0'));
+	return (int) c1-c2;
+}
+
+
 
 static void __god(std::vector<std::string> *args, int num)
 {

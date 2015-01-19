@@ -1,7 +1,7 @@
 
 #ifndef _TEXTBOX_H
 #define _TEXTBOX_H
-#include <stdint.h>
+#include <sdl.h>
 #include "YesNoPrompt.h"
 #include "ItemImage.h"
 #include "StageSelect.h"

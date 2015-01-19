@@ -2,8 +2,13 @@
 #include "graphics.h"
 #include "../common/stat.h"
 #include <malloc.h>
-
+#include <stdio.h>
 #include <sys/stat.h>
+
+#ifdef _MSC_VER
+#define snprintf _snprintf
+#endif
+
 namespace Screenshot
 {
         /*Generate screenshot name. From MPlayer */

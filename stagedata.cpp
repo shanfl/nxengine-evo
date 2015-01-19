@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include <stdint.h>
+#include <sdl.h>
 #include "stagedata.h"
 
 const char *backdrop_names[] = {

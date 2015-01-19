@@ -1,11 +1,14 @@
 
 #include <stdio.h>
-#include <stdint.h>
+#include <sdl.h>
 #include <string.h>
 #include <sys/stat.h>
 #include "extractpxt.h"
 #include "../common/misc.h"
 
+#ifdef _MSC_VER
+#include <direct.h>
+#endif
 
 static struct
 {
@@ -156,7 +159,8 @@ int s, c, i;
 		sprintf(outfilename, "pxt/fx%02x.pxt", snd[s].id);
 		printf("[ %s ]\n", outfilename);
 		
-		mkdir("pxt", 0755);
+		//mkdir("pxt", 0755);
+		mkdir("pxt");
 		FILE *fpo = fopen(outfilename, "wb");
 		if (!fpo)
 		{

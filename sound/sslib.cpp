@@ -4,7 +4,7 @@
 
 #include <SDL.h>
 #include <stdio.h>
-#include <stdint.h>
+#include <sdl.h>
 #include <stdlib.h>
 #include <string.h>
 #include "../common/basics.h"

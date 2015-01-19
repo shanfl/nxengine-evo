@@ -5,7 +5,7 @@
 #include "basics.h"
 #include <stdlib.h>
 #include <string.h>
-#include <stdint.h>
+//#include <stdint.h>
 
 /*
 	DBuffer vs. DString

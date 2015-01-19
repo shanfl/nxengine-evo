@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include <stdint.h>
+#include <sdl.h>
 #include <string.h>
 #include "crc.h"
 
