@@ -14,8 +14,7 @@ static struct
 {
 	const char *name;
 	bool is_integer;
-}
-fields[] =
+} fields[] =
 {
 	"use  ", 1,
 	"size ", 1,
@@ -141,15 +140,16 @@ snd[] =
 
 bool extract_pxt(FILE *fp)
 {
-struct
-{
-	union
+	struct
 	{
-		int intvalue;
-		double fpvalue;
-	} values[50];
-} chan[4];
-int s, c, i;
+		union
+		{
+			int intvalue;
+			double fpvalue;
+		} values[50];
+	} chan[4];
+
+	int s, c, i;
 
 	for(s=0;;s++)
 	{
