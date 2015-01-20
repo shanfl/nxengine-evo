@@ -17,7 +17,7 @@ using namespace Graphics;
 #include "sprites.h"
 
 static NXSurface *spritesheet[MAX_SPRITESHEETS];
-static int num_spritesheets;
+static int num_spritesheets;						// 精灵表的数量
 static std::vector<std::string> sheetfiles;
 
 SIFSprite sprites[MAX_SPRITES];
