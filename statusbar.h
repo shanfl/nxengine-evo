@@ -4,14 +4,14 @@
 
 struct PercentBar
 {
-	int displayed_value;
-	int dectimer;
+    int displayed_value;
+    int dectimer;
 };
 
 struct StatusBar
 {
-	int xpflashcount;
-	int xpflashstate;
+    int xpflashcount;
+    int xpflashstate;
 };
 
 extern StatusBar statusbar;

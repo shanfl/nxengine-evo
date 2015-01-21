@@ -8,10 +8,10 @@
 uint8_t run_shot(Object *o, bool destroys_blocks);
 enum run_shot_result
 {
-	RS_NONE = 0,
-	RS_HIT_ENEMY,
-	RS_HIT_WALL,
-	RS_TTL_EXPIRED
+    RS_NONE = 0,
+    RS_HIT_ENEMY,
+    RS_HIT_WALL,
+    RS_TTL_EXPIRED
 };
 
 Object *check_hit_enemy(Object *o, uint32_t flags_to_exclude=0);

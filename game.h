@@ -9,11 +9,11 @@
 
 enum Directions
 {
-	RIGHT	= 0,
-	LEFT	= 1,
-	UP		= 2,
-	DOWN	= 3,
-	CENTER	= 5
+    RIGHT	= 0,
+    LEFT	= 1,
+    UP		= 2,
+    DOWN	= 3,
+    CENTER	= 5
 };
 
 #define GAME_FPS		50
@@ -39,98 +39,98 @@ enum Directions
 // game modes (changes *tickfunction)
 enum GameModes
 {
-	GM_NONE,			// default mode at startup & shutdown
-	GM_NORMAL,			// playing the game
-	GM_INVENTORY,		// in inventory screen
-	GM_MAP_SYSTEM,		// viewing Map System
-	GM_ISLAND,			// XX1 good-ending island-crash cutscene
-	GM_CREDITS,			// <CRE credits
-	GM_INTRO,			// intro
-	GM_TITLE,			// title screen
-	
-	GP_PAUSED,			// pausemode: Pause (use game.pause())
-	GP_OPTIONS,			// pausemode: Options (use game.pause())
-	
-	NUM_GAMEMODES
+    GM_NONE,			// default mode at startup & shutdown
+    GM_NORMAL,			// playing the game
+    GM_INVENTORY,		// in inventory screen
+    GM_MAP_SYSTEM,		// viewing Map System
+    GM_ISLAND,			// XX1 good-ending island-crash cutscene
+    GM_CREDITS,			// <CRE credits
+    GM_INTRO,			// intro
+    GM_TITLE,			// title screen
+
+    GP_PAUSED,			// pausemode: Pause (use game.pause())
+    GP_OPTIONS,			// pausemode: Options (use game.pause())
+
+    NUM_GAMEMODES
 };
 
 // note: this structure is memsetted at 0 at startup.
 // ensure it doesn't contain any non-POD types that would be harmed by this.
 struct Game
 {
-	bool running;
-	bool frozen;
-	
-	int mode;
-	int paused;
-	
-	int curmap;
-	int showmapnametime;
-	int mapname_x;
-	
-	uint32_t counter;	// Nikumaru counter value
-	
-	struct
-	{
-		bool god;
-		//bool debugmode;
-		bool infinite_damage;
-		bool DrawBoundingBoxes;
-	} debug;
-	
-	// if mapno becomes >= 0 the stage ends and we switch to the new stage
-	struct
-	{
-		int mapno;
-		int playerx, playery;
-		int eventonentry;
-		int param;
-	} switchstage;
-	
-	// game flags and skipflags as set by scripts
-	bool flags[NUM_GAMEFLAGS];
-	bool skipflags[NUM_GAMEFLAGS];
-	
-	// earthquake effect; <QUA command
-	int quaketime;
-	int megaquaketime;
-	
-	// stuff for boss bar
- 	struct
-	{
-		Object *object;			// if != NULL, a boss bar is shown displaying this object's remaining health
-		int starting_hp;		// HP boss had when <BSL was called
-		bool defeated;			// set to true when boss is defeated
-		PercentBar bar;
-	} bossbar;
-	
-	StageBossManager stageboss;
-	
-	// set by enemies in Labyrinth M and by Almond Core to tell
-	// curly where to shoot at (it's like a hint)
-	struct
-	{
-		int x, y, timeleft;
-	} curlytarget;
-	
-	int fullscreen;
-	int ffwdtime;		// debug option: disables speed-limiting for ffwdtime ticks
-	
+    bool running;
+    bool frozen;
+
+    int mode;
+    int paused;
+
+    int curmap;
+    int showmapnametime;
+    int mapname_x;
+
+    uint32_t counter;	// Nikumaru counter value
+
+    struct
+    {
+        bool god;
+        //bool debugmode;
+        bool infinite_damage;
+        bool DrawBoundingBoxes;
+    } debug;
+
+    // if mapno becomes >= 0 the stage ends and we switch to the new stage
+    struct
+    {
+        int mapno;
+        int playerx, playery;
+        int eventonentry;
+        int param;
+    } switchstage;
+
+    // game flags and skipflags as set by scripts
+    bool flags[NUM_GAMEFLAGS];
+    bool skipflags[NUM_GAMEFLAGS];
+
+    // earthquake effect; <QUA command
+    int quaketime;
+    int megaquaketime;
+
+    // stuff for boss bar
+    struct
+    {
+        Object *object;			// if != NULL, a boss bar is shown displaying this object's remaining health
+        int starting_hp;		// HP boss had when <BSL was called
+        bool defeated;			// set to true when boss is defeated
+        PercentBar bar;
+    } bossbar;
+
+    StageBossManager stageboss;
+
+    // set by enemies in Labyrinth M and by Almond Core to tell
+    // curly where to shoot at (it's like a hint)
+    struct
+    {
+        int x, y, timeleft;
+    } curlytarget;
+
+    int fullscreen;
+    int ffwdtime;		// debug option: disables speed-limiting for ffwdtime ticks
+
 // ---------------------------------------
 
-	// static member functions--not private (Game is an object, not a namespace)
-	static bool init();
-	static bool initlevel();
-	static bool createplayer();
-	
-	static void switchmap(int mapno, int scriptno=0, int px=0, int py=0);
-	static void reset();
-	
-	static bool setmode(int newmode, int param=0, bool force=false);
-	static bool pause(int pausemode, int param=0);
-	static void tick();
-	
-	static void close();
+    // static member functions--not private (Game is an object, not a namespace)
+    static bool init();
+    static bool initlevel();
+    static bool createplayer();
+
+    static void switchmap(int mapno, int scriptno=0, int px=0, int py=0);
+    static void reset();
+
+    static bool setmode(int newmode, int param=0, bool force=false);
+    static bool pause(int pausemode, int param=0);
+    static void tick();
+
+    static void close();
 };
 
 // NPC flags definitions

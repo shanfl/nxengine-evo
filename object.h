@@ -10,276 +10,285 @@
 class Object
 {
 public:
-	virtual ~Object() { }		// REQUIRED for subclasses (e.g. Player)
-	
-	void SetType(int type);
-	void ChangeType(int type);
-	void BringToFront();
-	void PushBehind(Object *behind);
-	void PushBehind(int objtype);
-	
-	// --------------------------------------- hit detection w/ map
-	
-	uint32_t GetAttributes(const Point *pointlist, int npoints, int *tile = NULL);
-	
-	bool CheckAttribute(const Point *pointlist, int npoints, uint32_t attrmask, \
-						int *tile_x = NULL, int *tile_y = NULL);
-	
-	bool CheckSolidIntersect(Object *other, const Point *pointlist, int npoints);
-	
-	// --------------------------------------- overridden convenience versions of above
-	
-	bool CheckAttribute(SIFPointList *points, uint32_t attrmask, int *tile_x = NULL, int *tile_y = NULL)
-	{
-		return CheckAttribute(&points->point[0], points->count, attrmask, tile_x, tile_y);
-	}
-	
-	uint32_t GetAttributes(SIFPointList *points, int *tile = NULL)
-	{
-		return GetAttributes(&points->point[0], points->count, tile);
-	}
-	
-	bool CheckSolidIntersect(Object *other, SIFPointList *points)
-	{
-		return CheckSolidIntersect(other, &points->point[0], points->count);
-	}
-	
-	// ---------------------------------------
-	
-	void UpdateBlockStates(uint8_t updatemask);
-	void SetBlockForSolidBrick(uint8_t updatemask);
-	int GetBlockingType();
-	
-	// ---------------------------------------
-	
-	bool apply_xinertia(int inertia);
-	bool apply_yinertia(int inertia);
-	void PushPlayerOutOfWay(int xinertia, int yinertia);
-	void SnapToGround();
-	
-	// ---------------------------------------
-	
-	void DealDamage(int dmg, Object *shot = NULL);
-	void Kill();
-	void SpawnPowerups();
-	void SpawnXP(int amt);
-	
-	// ---------------------------------------
-	
-	void RunAI();
-	void DealContactDamage();
-	int GetAttackDirection();
-	
-	void OnTick();
-	void OnAftermove();
-	void OnSpawn();
-	void OnDeath();
-	
-	// ---------------------------------------
-	
-	void animate_seq(int speed, const int *framelist, int nframes);
-	void CurlyTargetHere(int mintime = 80, int maxtime = 100);
-	void ResetClip();
-	void MoveAtDir(int dir, int speed);
-	
-	// ---------------------------------------
-	
-	void Delete();			// mark for deletion at end of frame
-	void Destroy();			// delete immediately
-	void DisconnectGamePointers();
-	
-	// ---------------------------------------
-	
-	int Width();
-	int Height();
-	
-	int BBoxWidth();
-	int BBoxHeight();
-	
-	int CenterX();
-	int CenterY();
-	
-	int Left();
-	int Right();
-	int Top();
-	int Bottom();
-	
-	int SolidLeft();
-	int SolidRight();
-	int SolidTop();
-	int SolidBottom();
-	
-	int ActionPointX();
-	int ActionPointY();
-	int ActionPoint2X();
-	int ActionPoint2Y();
-	int DrawPointX();
-	int DrawPointY();
-	
-	SIFSprite *Sprite();
-	
-	// ---------------------------------------
-	
-	int type;								// object's type
-	int sprite;								// sprite # to use with object
-	int frame;								// frame of sprite to display
-	
-	int x, y;
-	int xinertia, yinertia;
-	uint8_t dir;
-	
-	int hp;									// remaining health
-	int damage;								// if != 0 does this much damage to player on touch
-	int state;								// AI state
-	int substate;							// state of current "common/shared" AI routine
-	int dirparam;							// for ANP's that use the dir as an extra parameter: see tsc.cpp: SetCSDir
-	
-	// if the object has FLAG_SOLID_BRICK set, this is how much damage it does to the
-	// player if it runs him into a wall or the ceiling/floor.
-	int smushdamage;
-	
-	// for enemies' "shaking" effect when hurt
-	int shaketime;
-	int display_xoff;
-	
-	// rising damage points
-	FloatText *DamageText;
-	// tracks amount of damage dealt quickly, while the objects is still shaking from
-	// previous shots. displaying this damage is postponed until the enemy stops shaking.
-	int DamageWaiting;
-	
-	// for teleportation and other effects
-	bool clip_enable;
-	int clipx1, clipx2;
-	int clipy1, clipy2;
-	
-	// for use by AI
-	int timer, timer2, timer3;
-	int animtimer;
-	int animframe;
-	int blinktimer;
-	int xmark, ymark;
-	int xmark2, ymark2;
-	uint8_t angle, angleoffset;				// used for a few such as skullstep
-	int speed;
-	int savedhp;
-	
-	uint32_t flags;							// NPC flags (from .pxe)
-	uint32_t nxflags;						// NXEngine-specific flags
-	uint16_t id1, id2;						// object identifiers (from .pxe)
-	
-	bool onscreen;							// true if currently onscreen (lags 1 frame behind)
-	bool invisible;							// if true the object will NOT be rendered (but still does collision checking)
-	
-	// flags which are set if an object is touching a wall, ceiling, or floor
-	// they're addressable either by the array or individually.
-	#define BLOCKED_MAP		1
-	#define BLOCKED_OBJECT	2
-	union {
-		struct { uint8_t blockr, blockl, blocku, blockd; };
-		uint8_t block[4];
-	};
-	union {
-		struct { uint8_t lastblockr, lastblockl, lastblocku, lastblockd; };
-		uint8_t lastblock[4];
-	};
-	
-	// if true, object has been deleted and should be freed before next tick
-	bool deleted;
-	
-	// the dual-layered linked-list. one list is order of creation is the
-	// order AI routines are run in, the other is the z-order and is the
-	// order the objects are drawn in.
-	Object *prev, *next;
-	Object *lower, *higher;
-	
-	Object *linkedobject;
-	
-	// AI variables used for specific AI functions
-	union
-	{
-		// for player shots (not enemy shots)
-		struct
-		{
-			int ttl;			// frames left till shot times out; sets range
-			int dir;			// direction shot was fired in, LEFT RIGHT UP DOWN.
-			int damage;			// damage dealt per hit
-			
-			int btype;			// bullet type
-			int level;			// weapon level (0, 1, or 2)
-			
-			// missile boom spawner used w/ player missiles
-			struct
-			{
-				int range;
-				int booms_left;
-			} boomspawner;
-		} shot;
-		
-		struct
-		{
-			int bultype;
-			int nlayers;
-			int wave_amt;
-		} mgun;
-		
-		struct
-		{	// if 1 on an OBJ_CARRIED_OBJECT then object faces in OPPOSITE direction of carrier
-			bool flip;
-		} carry;
-		
-		struct
-		{
-			int jumpheight, jumpgrav;
-			int falldmg;
-			bool canfly;
-		} critter;
-		
-		struct
-		{
-			int blockedtime;
-			int reachptimer;
-			int tryjumptime;
-			int impjumptime;
-			uint8_t impjump;
-			uint8_t look;
-			int gunsprite;
-			int changedirtimer;
-			bool spawned_watershield;
-		} curly;
-		
-		struct
-		{
-			bool left_ground;
-		} toro;
-		
-		struct
-		{
-			Object *carried_by;
-		} sue;
-		
-		struct
-		{
-			bool smoking;
-			int smoketimer;
-		} balrog;
-		
-		struct
-		{
-			bool fireattack;
-		} igor;
-		
-		struct
-		{
-			bool is_horizontal;
-			int x1, y1, x2, y2;
-		} hvt;	// hvtrigger
-		
-		struct
-		{
-			Object *layers[4];
-		} cloud;
-	};
+    virtual ~Object() { }		// REQUIRED for subclasses (e.g. Player)
+
+    void SetType(int type);
+    void ChangeType(int type);
+    void BringToFront();
+    void PushBehind(Object *behind);
+    void PushBehind(int objtype);
+
+    // --------------------------------------- hit detection w/ map
+
+    uint32_t GetAttributes(const Point *pointlist, int npoints, int *tile = NULL);
+
+    bool CheckAttribute(const Point *pointlist, int npoints, uint32_t attrmask, \
+                        int *tile_x = NULL, int *tile_y = NULL);
+
+    bool CheckSolidIntersect(Object *other, const Point *pointlist, int npoints);
+
+    // --------------------------------------- overridden convenience versions of above
+
+    bool CheckAttribute(SIFPointList *points, uint32_t attrmask, int *tile_x = NULL, int *tile_y = NULL)
+    {
+        return CheckAttribute(&points->point[0], points->count, attrmask, tile_x, tile_y);
+    }
+
+    uint32_t GetAttributes(SIFPointList *points, int *tile = NULL)
+    {
+        return GetAttributes(&points->point[0], points->count, tile);
+    }
+
+    bool CheckSolidIntersect(Object *other, SIFPointList *points)
+    {
+        return CheckSolidIntersect(other, &points->point[0], points->count);
+    }
+
+    // ---------------------------------------
+
+    void UpdateBlockStates(uint8_t updatemask);
+    void SetBlockForSolidBrick(uint8_t updatemask);
+    int GetBlockingType();
+
+    // ---------------------------------------
+
+    bool apply_xinertia(int inertia);
+    bool apply_yinertia(int inertia);
+    void PushPlayerOutOfWay(int xinertia, int yinertia);
+    void SnapToGround();
+
+    // ---------------------------------------
+
+    void DealDamage(int dmg, Object *shot = NULL);
+    void Kill();
+    void SpawnPowerups();
+    void SpawnXP(int amt);
+
+    // ---------------------------------------
+
+    void RunAI();
+    void DealContactDamage();
+    int GetAttackDirection();
+
+    void OnTick();
+    void OnAftermove();
+    void OnSpawn();
+    void OnDeath();
+
+    // ---------------------------------------
+
+    void animate_seq(int speed, const int *framelist, int nframes);
+    void CurlyTargetHere(int mintime = 80, int maxtime = 100);
+    void ResetClip();
+    void MoveAtDir(int dir, int speed);
+
+    // ---------------------------------------
+
+    void Delete();			// mark for deletion at end of frame
+    void Destroy();			// delete immediately
+    void DisconnectGamePointers();
+
+    // ---------------------------------------
+
+    int Width();
+    int Height();
+
+    int BBoxWidth();
+    int BBoxHeight();
+
+    int CenterX();
+    int CenterY();
+
+    int Left();
+    int Right();
+    int Top();
+    int Bottom();
+
+    int SolidLeft();
+    int SolidRight();
+    int SolidTop();
+    int SolidBottom();
+
+    int ActionPointX();
+    int ActionPointY();
+    int ActionPoint2X();
+    int ActionPoint2Y();
+    int DrawPointX();
+    int DrawPointY();
+
+    SIFSprite *Sprite();
+
+    // ---------------------------------------
+
+    int type;								// object's type
+    int sprite;								// sprite # to use with object
+    int frame;								// frame of sprite to display
+
+    int x, y;
+    int xinertia, yinertia;
+    uint8_t dir;
+
+    int hp;									// remaining health
+    int damage;								// if != 0 does this much damage to player on touch
+    int state;								// AI state
+    int substate;							// state of current "common/shared" AI routine
+    int dirparam;							// for ANP's that use the dir as an extra parameter: see tsc.cpp: SetCSDir
+
+    // if the object has FLAG_SOLID_BRICK set, this is how much damage it does to the
+    // player if it runs him into a wall or the ceiling/floor.
+    int smushdamage;
+
+    // for enemies' "shaking" effect when hurt
+    int shaketime;
+    int display_xoff;
+
+    // rising damage points
+    FloatText *DamageText;
+    // tracks amount of damage dealt quickly, while the objects is still shaking from
+    // previous shots. displaying this damage is postponed until the enemy stops shaking.
+    int DamageWaiting;
+
+    // for teleportation and other effects
+    bool clip_enable;
+    int clipx1, clipx2;
+    int clipy1, clipy2;
+
+    // for use by AI
+    int timer, timer2, timer3;
+    int animtimer;
+    int animframe;
+    int blinktimer;
+    int xmark, ymark;
+    int xmark2, ymark2;
+    uint8_t angle, angleoffset;				// used for a few such as skullstep
+    int speed;
+    int savedhp;
+
+    uint32_t flags;							// NPC flags (from .pxe)
+    uint32_t nxflags;						// NXEngine-specific flags
+    uint16_t id1, id2;						// object identifiers (from .pxe)
+
+    bool onscreen;							// true if currently onscreen (lags 1 frame behind)
+    bool invisible;							// if true the object will NOT be rendered (but still does collision checking)
+
+    // flags which are set if an object is touching a wall, ceiling, or floor
+    // they're addressable either by the array or individually.
+#define BLOCKED_MAP		1
+#define BLOCKED_OBJECT	2
+    union
+    {
+        struct
+        {
+            uint8_t blockr, blockl, blocku, blockd;
+        };
+        uint8_t block[4];
+    };
+    union
+    {
+        struct
+        {
+            uint8_t lastblockr, lastblockl, lastblocku, lastblockd;
+        };
+        uint8_t lastblock[4];
+    };
+
+    // if true, object has been deleted and should be freed before next tick
+    bool deleted;
+
+    // the dual-layered linked-list. one list is order of creation is the
+    // order AI routines are run in, the other is the z-order and is the
+    // order the objects are drawn in.
+    Object *prev, *next;
+    Object *lower, *higher;
+
+    Object *linkedobject;
+
+    // AI variables used for specific AI functions
+    union
+    {
+        // for player shots (not enemy shots)
+        struct
+        {
+            int ttl;			// frames left till shot times out; sets range
+            int dir;			// direction shot was fired in, LEFT RIGHT UP DOWN.
+            int damage;			// damage dealt per hit
+
+            int btype;			// bullet type
+            int level;			// weapon level (0, 1, or 2)
+
+            // missile boom spawner used w/ player missiles
+            struct
+            {
+                int range;
+                int booms_left;
+            } boomspawner;
+        } shot;
+
+        struct
+        {
+            int bultype;
+            int nlayers;
+            int wave_amt;
+        } mgun;
+
+        struct
+        {
+            // if 1 on an OBJ_CARRIED_OBJECT then object faces in OPPOSITE direction of carrier
+            bool flip;
+        } carry;
+
+        struct
+        {
+            int jumpheight, jumpgrav;
+            int falldmg;
+            bool canfly;
+        } critter;
+
+        struct
+        {
+            int blockedtime;
+            int reachptimer;
+            int tryjumptime;
+            int impjumptime;
+            uint8_t impjump;
+            uint8_t look;
+            int gunsprite;
+            int changedirtimer;
+            bool spawned_watershield;
+        } curly;
+
+        struct
+        {
+            bool left_ground;
+        } toro;
+
+        struct
+        {
+            Object *carried_by;
+        } sue;
+
+        struct
+        {
+            bool smoking;
+            int smoketimer;
+        } balrog;
+
+        struct
+        {
+            bool fireattack;
+        } igor;
+
+        struct
+        {
+            bool is_horizontal;
+            int x1, y1, x2, y2;
+        } hvt;	// hvtrigger
+
+        struct
+        {
+            Object *layers[4];
+        } cloud;
+    };
 };
 
 

@@ -5,15 +5,15 @@
 #define MAX_STAGES		120
 struct MapRecord
 {
-	char filename[32];
-	char stagename[35];
-	
-	uint8_t tileset;
-	uint8_t bg_no;
-	uint8_t scroll_type;
-	uint8_t bossNo;
-	uint8_t NPCset1;
-	uint8_t NPCset2;
+    char filename[32];
+    char stagename[35];
+
+    uint8_t tileset;
+    uint8_t bg_no;
+    uint8_t scroll_type;
+    uint8_t bossNo;
+    uint8_t NPCset1;
+    uint8_t NPCset2;
 };
 extern MapRecord stages[MAX_STAGES];
 extern int num_stages;

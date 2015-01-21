@@ -9,25 +9,28 @@
 class TB_SaveSelect
 {
 public:
-	TB_SaveSelect();
-	
-	void ResetState();
-	void SetVisible(bool enable, bool saving=SS_LOADING);
-	
-	bool IsVisible();
-	void Draw();
-	
+    TB_SaveSelect();
+
+    void ResetState();
+    void SetVisible(bool enable, bool saving=SS_LOADING);
+
+    bool IsVisible();
+    void Draw();
+
 private:
-	void Run_Input();
-	void DrawProfile(int x, int y, int index);
-	void DrawExtendedInfo();
-	
-	bool fVisible;
-	bool fSaving;
-	int fCurSel;
-	int fNumFiles;
-	
-	struct { int x, y, w, h; } fCoords;
+    void Run_Input();
+    void DrawProfile(int x, int y, int index);
+    void DrawExtendedInfo();
+
+    bool fVisible;
+    bool fSaving;
+    int fCurSel;
+    int fNumFiles;
+
+    struct
+    {
+        int x, y, w, h;
+    } fCoords;
 };
 
 

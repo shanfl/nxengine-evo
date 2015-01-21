@@ -43,28 +43,28 @@ void _exit(ODItem* item, int dir)
 
 bool pause_init(int param)
 {
-	memset(lastinputs, 1, sizeof(lastinputs));
-	dlg = new Dialog();
-	dlg->AddItem("Resume", _resume);
-	dlg->AddItem("Options", _options);
-	dlg->AddItem("Reset", _reset);
-	dlg->AddItem("Exit", _exit);
-	dlg->SetSelection(mm_cursel);
-	dlg->ShowFull();
-	dlg->SetSize(100,70);
-	return 0;
+    memset(lastinputs, 1, sizeof(lastinputs));
+    dlg = new Dialog();
+    dlg->AddItem("Resume", _resume);
+    dlg->AddItem("Options", _options);
+    dlg->AddItem("Reset", _reset);
+    dlg->AddItem("Exit", _exit);
+    dlg->SetSelection(mm_cursel);
+    dlg->ShowFull();
+    dlg->SetSize(100,70);
+    return 0;
 }
 
 void pause_tick()
 {
-	dlg->RunInput();
-	dlg->Draw();
-	
-	if (justpushed(ESCKEY))
-	{
-	    _resume(NULL,0);
-		return;
-	}
+    dlg->RunInput();
+    dlg->Draw();
+
+    if (justpushed(ESCKEY))
+    {
+        _resume(NULL,0);
+        return;
+    }
 }
 
 

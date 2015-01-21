@@ -31,10 +31,10 @@ RectF RectF::centred(PointF const& p, float w, float h)
 RectF RectF::fromRectI(RectI const& rect)
 {
     RectF r = {(float)rect.x / Graphics::SCREEN_WIDTH,
-        (float)rect.y / Graphics::SCREEN_HEIGHT,
-        (float)rect.w / Graphics::SCREEN_WIDTH,
-        (float)rect.h / Graphics::SCREEN_HEIGHT,
-    };
+               (float)rect.y / Graphics::SCREEN_HEIGHT,
+               (float)rect.w / Graphics::SCREEN_WIDTH,
+               (float)rect.h / Graphics::SCREEN_HEIGHT,
+              };
     return r;
 }
 
@@ -90,19 +90,19 @@ RectF RectF::scale(float factor)
 {
 //    float cx = x + w/2;
 //    float cy = y + h/2;
-//    
+//
 //    float nw = w * factor;
 //    float nh = h * factor;
-//    
+//
 //    RectF r = {cx - 2*nw, cy - 2*nh, nw, nh};
-    
+
     RectF r = {x, y, w * factor, h * factor};
     return r;
 }
 
 
 TriF::TriF(PointF const& a, float size, float rb, float rc) :
-a(a)
+    a(a)
 {
 #define P(a) (double(a) * M_PI / 8.0)
     b = PointF(cos(P(rb)), sin(P(rb))) * size + a;
@@ -118,10 +118,10 @@ float TriF::sign(PointF const& p1, PointF const& p2, PointF const& p3)
 bool TriF::in(PointF const& pt) const
 {
     bool b1, b2, b3;
-    
+
     b1 = sign(pt, a, b) < 0.0f;
     b2 = sign(pt, b, c) < 0.0f;
     b3 = sign(pt, c, a) < 0.0f;
-    
+
     return ((b1 == b2) && (b2 == b3));
 }

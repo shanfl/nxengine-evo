@@ -5,34 +5,34 @@
 // but I generalized it as if there might be more just for good style.
 struct ScriptInstance
 {
-	const uint8_t *program;				// compiled script code
-	uint32_t ip;						// instruction pointer
-	bool running;
-	
-	int scriptno;						// script # of active script
-	int pageno;							// ScriptPage/namespace # script is in
-	
-	int delaytimer;						// time left on a <WAI delay
-	
-	// used with <NOD
-	bool waitforkey;
-	bool lastjump, lastfire;
-	int nod_delay;
-	
-	int ynj_jump;						// if != -1, a Yes/No choice is up, and this is the event # to jump to if they pick No.
-	
-	bool wait_standing;					// if 1 pauses script until player touches ground
+    const uint8_t *program;				// compiled script code
+    uint32_t ip;						// instruction pointer
+    bool running;
+
+    int scriptno;						// script # of active script
+    int pageno;							// ScriptPage/namespace # script is in
+
+    int delaytimer;						// time left on a <WAI delay
+
+    // used with <NOD
+    bool waitforkey;
+    bool lastjump, lastfire;
+    int nod_delay;
+
+    int ynj_jump;						// if != -1, a Yes/No choice is up, and this is the event # to jump to if they pick No.
+
+    bool wait_standing;					// if 1 pauses script until player touches ground
 };
 
 // script "pages", like namespaces, for the different tsc files
 enum ScriptPages
 {
-	SP_HEAD,							// head.tsc common scripts
-	SP_MAP,								// map scripts
-	SP_ARMSITEM,						// inventory screen
-	SP_STAGESELECT,						// scripts for Arthur's House teleporter
-	
-	NUM_SCRIPT_PAGES
+    SP_HEAD,							// head.tsc common scripts
+    SP_MAP,								// map scripts
+    SP_ARMSITEM,						// inventory screen
+    SP_STAGESELECT,						// scripts for Arthur's House teleporter
+
+    NUM_SCRIPT_PAGES
 };
 
 ScriptInstance *StartScript(int scriptno, int pageno=SP_MAP);

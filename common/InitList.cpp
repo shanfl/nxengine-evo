@@ -11,21 +11,21 @@
 
 void InitList::AddFunction(void (*func)(void))
 {
-	AddFunction((void *)func);
+    AddFunction((void *)func);
 }
 
 void InitList::AddFunction(bool (*func)(void))
 {
-	AddFunction((void *)func);
+    AddFunction((void *)func);
 }
 
 void InitList::AddFunction(void *func)
 {
-	//stat("AddFunction (void)%08x [%d]", func, fCount);
-	if (fCount >= MAX_INIT_RECORDS)
-		return;
-	
-	fFunctions[fCount++] = (void *)func;
+    //stat("AddFunction (void)%08x [%d]", func, fCount);
+    if (fCount >= MAX_INIT_RECORDS)
+        return;
+
+    fFunctions[fCount++] = (void *)func;
 }
 
 /*
@@ -34,23 +34,23 @@ void c------------------------------() {}
 
 bool InitList::CallFunctions()
 {
-int i;
+    int i;
 
-	if (fCount >= MAX_INIT_RECORDS)
-	{
-		stat("InitList::CallFunctions(%08x): too many initializers", this);
-		return 1;
-	}
-	
-	stat("InitList::CallFunctions(%08x): executing %d functions...", this, fCount);
-	
-	for(i=0;i<fCount;i++)
-	{
-		void (*func)(void) = (void (*)())fFunctions[i];
-		(*func)();
-	}
-	
-	return 0;
+    if (fCount >= MAX_INIT_RECORDS)
+    {
+        stat("InitList::CallFunctions(%08x): too many initializers", this);
+        return 1;
+    }
+
+    stat("InitList::CallFunctions(%08x): executing %d functions...", this, fCount);
+
+    for(i=0; i<fCount; i++)
+    {
+        void (*func)(void) = (void (*)())fFunctions[i];
+        (*func)();
+    }
+
+    return 0;
 }
 
 

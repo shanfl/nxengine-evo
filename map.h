@@ -18,47 +18,47 @@
 
 struct stMap
 {
-	int xsize, ysize;
-	int displayed_xscroll, displayed_yscroll;
-	int maxxscroll, maxyscroll;
-	int parscroll_x, parscroll_y;
-	
-	int real_xscroll, real_yscroll;
-	int phase_adj;
-	
-	int target_x, target_y;
-	
-	int scrollcenter_x, scrollcenter_y;
-	int scrollspeed;
-	bool scroll_locked;
-	
-	
-	uint8_t backdrop;			// backdrop # in use
-	int scrolltype;				// backdrop scroll type
-	
-	Object *waterlevelobject; 	// object controlling water level (for maps with rising water)
-	int wlforcestate;			// set by Core--modifies the state of the water level object
-	int wlstate;				// set by WaterLevel object--reports it's current state
-	
-	// for FON, FOM script commands
-	struct
-	{
-		Object *target;
-		bool has_target;
-	} focus;
-	
-	// motion tiles used in Waterway and Main Artery--these tiles use
-	// a sprite as their image data and pan the sprite across them in a specified direction
-	struct
-	{
-		int tileno;					// tile # to animate
-		uint8_t dir;					// direction of scrolling
-		int sprite;					// sprite # containing image data
-	} motiontiles[MAX_MOTION_TILES];
-	int nmotiontiles;
-	int motionpos;
-	
-	unsigned char tiles[MAP_MAXSIZEX][MAP_MAXSIZEY];
+    int xsize, ysize;
+    int displayed_xscroll, displayed_yscroll;
+    int maxxscroll, maxyscroll;
+    int parscroll_x, parscroll_y;
+
+    int real_xscroll, real_yscroll;
+    int phase_adj;
+
+    int target_x, target_y;
+
+    int scrollcenter_x, scrollcenter_y;
+    int scrollspeed;
+    bool scroll_locked;
+
+
+    uint8_t backdrop;			// backdrop # in use
+    int scrolltype;				// backdrop scroll type
+
+    Object *waterlevelobject; 	// object controlling water level (for maps with rising water)
+    int wlforcestate;			// set by Core--modifies the state of the water level object
+    int wlstate;				// set by WaterLevel object--reports it's current state
+
+    // for FON, FOM script commands
+    struct
+    {
+        Object *target;
+        bool has_target;
+    } focus;
+
+    // motion tiles used in Waterway and Main Artery--these tiles use
+    // a sprite as their image data and pan the sprite across them in a specified direction
+    struct
+    {
+        int tileno;					// tile # to animate
+        uint8_t dir;					// direction of scrolling
+        int sprite;					// sprite # containing image data
+    } motiontiles[MAX_MOTION_TILES];
+    int nmotiontiles;
+    int motionpos;
+
+    unsigned char tiles[MAP_MAXSIZEX][MAP_MAXSIZEY];
 };
 
 extern stMap map;
@@ -109,13 +109,13 @@ void map_ChangeTileWithSmoke(int x, int y, int newtile, int nclouds=4, bool boom
 
 // needed if resolution is changed to a non-multiple of the tile size
 //#if (((SCREEN_WIDTH / TILE_W) * TILE_W) != SCREEN_WIDTH)
-	#define MAP_DRAW_EXTRA_X	1
+#define MAP_DRAW_EXTRA_X	1
 //#else
 //	#define MAP_DRAW_EXTRA_X	0
 //#endif
 
 //#if (((SCREEN_HEIGHT / TILE_H) * TILE_H) != SCREEN_HEIGHT)
-	#define MAP_DRAW_EXTRA_Y	1
+#define MAP_DRAW_EXTRA_Y	1
 //#else
 //	#define MAP_DRAW_EXTRA_Y	0
 //#endif

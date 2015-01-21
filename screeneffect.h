@@ -7,15 +7,18 @@
 class ScreenEffect
 {
 public:
-	ScreenEffect() { enabled = false; }
-	virtual ~ScreenEffect() { }
-	virtual void Draw() = 0;
-	
-	bool enabled;
-	
+    ScreenEffect()
+    {
+        enabled = false;
+    }
+    virtual ~ScreenEffect() { }
+    virtual void Draw() = 0;
+
+    bool enabled;
+
 protected:
-	int state;
-	int timer;
+    int state;
+    int timer;
 };
 
 
@@ -23,11 +26,11 @@ protected:
 // and is used in various places such as when Misery casts spells.
 struct SE_FlashScreen : public ScreenEffect
 {
-	void Start();
-	void Draw();
-	
-	int flashes_left;
-	bool flashstate;
+    void Start();
+    void Draw();
+
+    int flashes_left;
+    bool flashstate;
 };
 
 
@@ -35,31 +38,31 @@ struct SE_FlashScreen : public ScreenEffect
 // used when some bosses are defeated.
 struct SE_Starflash : public ScreenEffect
 {
-	void Start(int x, int y);
-	void Draw();
-	
-	int centerx, centery;
-	int size, speed;
+    void Start(int x, int y);
+    void Draw();
+
+    int centerx, centery;
+    int size, speed;
 };
 
 
 // Fade is the fade-in/out used on every stage transistion/TRA.
 struct SE_Fade : public ScreenEffect
 {
-	SE_Fade();
-	
-	void Start(int fadedir, int dir, int spr=SPR_FADE_DIAMOND);
-	void Draw(void);
-	void set_full(int dir);
-	int getstate(void);
+    SE_Fade();
 
-	struct
-	{
-		int fadedir;
-		int sweepdir;
-		int curframe;
-		int sprite;
-	} fade;
+    void Start(int fadedir, int dir, int spr=SPR_FADE_DIAMOND);
+    void Draw(void);
+    void set_full(int dir);
+    int getstate(void);
+
+    struct
+    {
+        int fadedir;
+        int sweepdir;
+        int curframe;
+        int sprite;
+    } fade;
 };
 
 #define FADE_IN			0
@@ -79,8 +82,8 @@ struct SE_Fade : public ScreenEffect
 
 namespace ScreenEffects
 {
-	void Draw(void);
-	void Stop();
+void Draw(void);
+void Stop();
 };
 
 

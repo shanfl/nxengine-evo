@@ -7,15 +7,15 @@
 
 struct Whimstar
 {
-	int x, y;
-	int xinertia, yinertia;
+    int x, y;
+    int xinertia, yinertia;
 };
 
 struct WhimsicalStar
 {
-	Whimstar stars[MAX_WHIMSTARS];
-	int nstars;
-	int stariter;
+    Whimstar stars[MAX_WHIMSTARS];
+    int nstars;
+    int stariter;
 };
 
 void init_whimstar(WhimsicalStar *wh);

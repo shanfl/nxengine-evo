@@ -40,79 +40,80 @@ static NXSurface const* current_batch_drawtarget = NULL;
 
 bool Graphics::init(int resolution)
 {
-	if (use_palette)
-	{
-		screen_bpp = 8;
-	}
-	else
-	{
-		screen_bpp = 16;	// the default
-	}
-	
-	
-	if (SetResolution(resolution, false))
-		return 1;
-	
-	if (Tileset::Init())
-		return 1;
-	
-	if (Sprites::Init())
-		return 1;
-	
-	return 0;
+    if (use_palette)
+    {
+        screen_bpp = 8;
+    }
+    else
+    {
+        screen_bpp = 16;	// the default
+    }
+
+
+    if (SetResolution(resolution, false))
+        return 1;
+
+    if (Tileset::Init())
+        return 1;
+
+    if (Sprites::Init())
+        return 1;
+
+    return 0;
 }
 
 void Graphics::close()
 {
-	stat("Graphics::Close()");
-	SDL_ShowCursor(true);
-	SDL_DestroyWindow(window); window = NULL;
+    stat("Graphics::Close()");
+    SDL_ShowCursor(true);
+    SDL_DestroyWindow(window);
+    window = NULL;
 }
 
 bool Graphics::WindowVisible()
 {
-	Uint32 flags = SDL_GetWindowFlags(window);
+    Uint32 flags = SDL_GetWindowFlags(window);
 
-	return (flags & SDL_WINDOW_SHOWN) && !(flags & SDL_WINDOW_MINIMIZED) // SDL_APPACTIVE
-		&& (flags & SDL_WINDOW_INPUT_FOCUS);                              // SDL_APPINPUTFOCUS 
+    return (flags & SDL_WINDOW_SHOWN) && !(flags & SDL_WINDOW_MINIMIZED) // SDL_APPACTIVE
+           && (flags & SDL_WINDOW_INPUT_FOCUS);                              // SDL_APPINPUTFOCUS
 }
 
 
 bool Graphics::InitVideo()
 {
-	if (drawtarget == screen) drawtarget = NULL;
-	if (screen) delete screen;
-	
-	uint32_t window_flags = SDL_WINDOW_SHOWN;
-	
-	const Graphics::gres_t* res=GetRes();
-	
-	uint32_t width = res[current_res].width;
-	uint32_t height = res[current_res].height;
-	
-	if (window)
-	{
-		stat("second call to Graphics::InitVideo()");
-	}
-	
-	stat("SDL_CreateWindow: %dx%d @ %dbpp", width, height, screen_bpp);
-	if (window)
-	{
-        	SDL_SetWindowSize(window, width, height);
-	}
-	else
-	{
-    	window = SDL_CreateWindow(NXVERSION, 
-	    	SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-    		width, height,
-    		window_flags);
-	}
+    if (drawtarget == screen) drawtarget = NULL;
+    if (screen) delete screen;
 
-	if (!window)
-	{
-		staterr("Graphics::InitVideo: error setting video mode (SDL_CreateWindow: %s)", SDL_GetError());
-		return 1;
-	}
+    uint32_t window_flags = SDL_WINDOW_SHOWN;
+
+    const Graphics::gres_t* res=GetRes();
+
+    uint32_t width = res[current_res].width;
+    uint32_t height = res[current_res].height;
+
+    if (window)
+    {
+        stat("second call to Graphics::InitVideo()");
+    }
+
+    stat("SDL_CreateWindow: %dx%d @ %dbpp", width, height, screen_bpp);
+    if (window)
+    {
+        SDL_SetWindowSize(window, width, height);
+    }
+    else
+    {
+        window = SDL_CreateWindow(NXVERSION,
+                                  SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                                  width, height,
+                                  window_flags);
+    }
+
+    if (!window)
+    {
+        staterr("Graphics::InitVideo: error setting video mode (SDL_CreateWindow: %s)", SDL_GetError());
+        return 1;
+    }
 
     SDL_Surface *icon;
     icon = SDL_CreateRGBSurfaceFrom((void *)WINDOW_TITLE_ICON.pixel_data,
@@ -120,69 +121,69 @@ bool Graphics::InitVideo()
                                     WINDOW_TITLE_ICON.height,
                                     WINDOW_TITLE_ICON.bytes_per_pixel * 8,
                                     WINDOW_TITLE_ICON.bytes_per_pixel * WINDOW_TITLE_ICON.width,
-                                #if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
+#if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
                                     0xff000000, /* Red bit mask. */
                                     0x00ff0000, /* Green bit mask. */
                                     0x0000ff00, /* Blue bit mask. */
                                     0x000000ff  /* Alpha bit mask. */
-                                #else
+#else
                                     0x000000ff, /* Red bit mask. */
                                     0x0000ff00, /* Green bit mask. */
                                     0x00ff0000, /* Blue bit mask. */
                                     0xff000000  /* Alpha bit mask. */
-                                #endif
-                                    );
+#endif
+                                   );
     SDL_SetWindowIcon(window, icon);
     SDL_FreeSurface(icon);
 
 
-	if (!renderer)
-    	renderer = SDL_CreateRenderer(window, -1, /*SDL_RENDERER_SOFTWARE | */SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
-	if (!renderer)
-	{
-		staterr("Graphics::InitVideo: error setting video mode (SDL_CreateRenderer: %s)", SDL_GetError());
-		return 1;
-	}
+    if (!renderer)
+        renderer = SDL_CreateRenderer(window, -1, /*SDL_RENDERER_SOFTWARE | */SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+    if (!renderer)
+    {
+        staterr("Graphics::InitVideo: error setting video mode (SDL_CreateRenderer: %s)", SDL_GetError());
+        return 1;
+    }
 
-	SDL_RendererInfo info;
-	if (SDL_GetRendererInfo(renderer, &info))
-	{
-		staterr("Graphics::InitVideo: SDL_GetRendererInfo failed: %s", SDL_GetError());
-		return 1;
-	}
+    SDL_RendererInfo info;
+    if (SDL_GetRendererInfo(renderer, &info))
+    {
+        staterr("Graphics::InitVideo: SDL_GetRendererInfo failed: %s", SDL_GetError());
+        return 1;
+    }
 
-	if (!(info.flags & SDL_RENDERER_TARGETTEXTURE))
-	{
-		staterr("Graphics::InitVideo: SDL_RENDERER_TARGETTEXTURE is not supported");
-		return 1;
-	}
+    if (!(info.flags & SDL_RENDERER_TARGETTEXTURE))
+    {
+        staterr("Graphics::InitVideo: SDL_RENDERER_TARGETTEXTURE is not supported");
+        return 1;
+    }
 
-	screen = NXSurface::createScreen(width, height, 
-		info.texture_formats[0]);
-    
+    screen = NXSurface::createScreen(width, height,
+                                     info.texture_formats[0]);
+
     if (!screen)
     {
         staterr("Graphics::InitVideo: no screen has been created");
         return 1;
     }
 
-	if (!drawtarget) drawtarget = screen;
-	return 0;
+    if (!drawtarget) drawtarget = screen;
+    return 0;
 }
 
 bool Graphics::FlushAll()
 {
-	stat("Graphics::FlushAll()");
-	Sprites::FlushSheets();
-	Tileset::Reload();
-	map_flush_graphics();
-	return font_reload();
+    stat("Graphics::FlushAll()");
+    Sprites::FlushSheets();
+    Tileset::Reload();
+    map_flush_graphics();
+    return font_reload();
 }
 
 void Graphics::SetFullscreen(bool enable)
 {
-	SDL_ShowCursor(!enable);
-	SDL_SetWindowFullscreen(window, (enable ? SDL_WINDOW_FULLSCREEN : 0));
+    SDL_ShowCursor(!enable);
+    SDL_SetWindowFullscreen(window, (enable ? SDL_WINDOW_FULLSCREEN : 0));
 }
 
 // change the video mode to one of the available resolution codes, currently:
@@ -192,55 +193,56 @@ void Graphics::SetFullscreen(bool enable)
 // 3 - Windowed scale x3 (960x720)
 bool Graphics::SetResolution(int r, bool restoreOnFailure)
 {
-	stat("Graphics::SetResolution(%d)", r);
-	if (r == current_res)
-		return 0;
-	
-	int old_res = current_res;
+    stat("Graphics::SetResolution(%d)", r);
+    if (r == current_res)
+        return 0;
 
-	int factor;
-	
-	if (r == 0)
-	{
-		factor = 1;
-	}
-	else
-	{
-	    const Graphics::gres_t* res=GetRes();
-		factor = res[r].scale;
-		SCREEN_HEIGHT = res[r].base_height;
-		SCREEN_WIDTH = res[r].base_width;
-		widescreen = res[r].widescreen;
-	}
-	
-	stat("Setting scaling %d", factor);
-	NXSurface::SetScale(factor);
+    int old_res = current_res;
+
+    int factor;
+
+    if (r == 0)
+    {
+        factor = 1;
+    }
+    else
+    {
+        const Graphics::gres_t* res=GetRes();
+        factor = res[r].scale;
+        SCREEN_HEIGHT = res[r].base_height;
+        SCREEN_WIDTH = res[r].base_width;
+        widescreen = res[r].widescreen;
+    }
+
+    stat("Setting scaling %d", factor);
+    NXSurface::SetScale(factor);
     current_res = r;
-	if (Graphics::InitVideo())
-	{
-		staterr("Switch to resolution %d failed!", r);
-		
-		if (restoreOnFailure)
-		{
-			staterr("Trying to recover old mode %d.", r, old_res);
-			if (Graphics::SetResolution(old_res, false))
-			{
-				staterr("Fatal error: vidmode recovery failed!!!");
-			}
-			current_res = old_res;
-		}
-		
-		return 1;
-	}
-	current_res = r;
-	if (Graphics::FlushAll()) return 1;
-	return 0;
+    if (Graphics::InitVideo())
+    {
+        staterr("Switch to resolution %d failed!", r);
+
+        if (restoreOnFailure)
+        {
+            staterr("Trying to recover old mode %d.", r, old_res);
+            if (Graphics::SetResolution(old_res, false))
+            {
+                staterr("Fatal error: vidmode recovery failed!!!");
+            }
+            current_res = old_res;
+        }
+
+        return 1;
+    }
+    current_res = r;
+    if (Graphics::FlushAll()) return 1;
+    return 0;
 }
 
 
 const Graphics::gres_t* Graphics::GetRes()
 {
-    static const Graphics::gres_t res[] = {
+    static const Graphics::gres_t res[] =
+    {
         // 4:3
         {(char*)"---", 0, 0, 0, 0, 1, false },
         {(char*)"320x240", 320, 240, 320, 240, 1, false },
@@ -261,11 +263,11 @@ const Graphics::gres_t* Graphics::GetRes()
 
 uint32_t Graphics::GetResCount()
 {
-  uint32_t i;
-  const gres_t *res = GetRes();
+    uint32_t i;
+    const gres_t *res = GetRes();
 
-  for (i=0;res[i].name;i++);
-  return i;
+    for (i=0; res[i].name; i++);
+    return i;
 }
 
 /*
@@ -277,47 +279,47 @@ void c------------------------------() {}
 // and for animated motion tiles in Waterway.
 void Graphics::CopySpriteToTile(int spr, int tileno, int offset_x, int offset_y)
 {
-NXRect srcrect, dstrect;
+    NXRect srcrect, dstrect;
 
-	srcrect.x = (sprites[spr].frame[0].dir[0].sheet_offset.x + offset_x);
-	srcrect.y = (sprites[spr].frame[0].dir[0].sheet_offset.y + offset_y);
-	srcrect.w = TILE_W;
-	srcrect.h = TILE_H;
-	
-	dstrect.x = (tileno % 16) * TILE_W;
-	dstrect.y = (tileno / 16) * TILE_H;
-	dstrect.w = TILE_W;
-	dstrect.h = TILE_H;
-	
-	NXSurface *tileset = Tileset::GetSurface();
-	NXSurface *spritesheet = Sprites::get_spritesheet(sprites[spr].spritesheet);
-	
-	if (tileset && spritesheet)
-	{
-		// blank out the old tile data with clear
-		tileset->ClearRect(&dstrect);
-		
-		// copy the sprite over
-		BlitSurface(spritesheet, &srcrect, tileset, &dstrect);
-	}
+    srcrect.x = (sprites[spr].frame[0].dir[0].sheet_offset.x + offset_x);
+    srcrect.y = (sprites[spr].frame[0].dir[0].sheet_offset.y + offset_y);
+    srcrect.w = TILE_W;
+    srcrect.h = TILE_H;
+
+    dstrect.x = (tileno % 16) * TILE_W;
+    dstrect.y = (tileno / 16) * TILE_H;
+    dstrect.w = TILE_W;
+    dstrect.h = TILE_H;
+
+    NXSurface *tileset = Tileset::GetSurface();
+    NXSurface *spritesheet = Sprites::get_spritesheet(sprites[spr].spritesheet);
+
+    if (tileset && spritesheet)
+    {
+        // blank out the old tile data with clear
+        tileset->ClearRect(&dstrect);
+
+        // copy the sprite over
+        BlitSurface(spritesheet, &srcrect, tileset, &dstrect);
+    }
 }
 
 
 void Graphics::ShowLoadingScreen()
 {
-NXSurface loading;
-char fname[MAXPATHLEN];
-	
-	sprintf(fname, "%s/Loading.pbm", data_dir);
-	if (loading.LoadImage(fname))
-		return;
-	
-	int x = (Graphics::SCREEN_WIDTH / 2) - (loading.Width() / 2);
-	int y = (Graphics::SCREEN_HEIGHT / 2) - loading.Height();
-	
-	ClearScreen(BLACK);
-	DrawSurface(&loading, x, y);
-	drawtarget->Flip();
+    NXSurface loading;
+    char fname[MAXPATHLEN];
+
+    sprintf(fname, "%s/Loading.pbm", data_dir);
+    if (loading.LoadImage(fname))
+        return;
+
+    int x = (Graphics::SCREEN_WIDTH / 2) - (loading.Width() / 2);
+    int y = (Graphics::SCREEN_HEIGHT / 2) - loading.Height();
+
+    ClearScreen(BLACK);
+    DrawSurface(&loading, x, y);
+    drawtarget->Flip();
 }
 
 /*
@@ -327,8 +329,8 @@ void c------------------------------() {}
 // blit from one surface to another, just like SDL_BlitSurface.
 void Graphics::BlitSurface(NXSurface *src, NXRect *srcrect, NXSurface *dst, NXRect *dstrect)
 {
-	dst->DrawSurface(src, dstrect->x, dstrect->y, \
-					 srcrect->x, srcrect->y, srcrect->w, srcrect->h);
+    dst->DrawSurface(src, dstrect->x, dstrect->y, \
+                     srcrect->x, srcrect->y, srcrect->w, srcrect->h);
 }
 
 /*
@@ -338,67 +340,67 @@ void c------------------------------() {}
 // draw the entire surface to the screen at the given coordinates.
 void Graphics::DrawSurface(NXSurface *src, int x, int y)
 {
-	drawtarget->DrawSurface(src, x, y);
+    drawtarget->DrawSurface(src, x, y);
 }
 
 
 // blit the specified portion of the surface to the screen
 void Graphics::DrawSurface(NXSurface *src, \
-						   int dstx, int dsty, int srcx, int srcy, int wd, int ht)
+                           int dstx, int dsty, int srcx, int srcy, int wd, int ht)
 {
-	drawtarget->DrawSurface(src, dstx, dsty, srcx, srcy, wd, ht);
+    drawtarget->DrawSurface(src, dstx, dsty, srcx, srcy, wd, ht);
 }
 
 
 // blit the specified surface across the screen in a repeating pattern
 void Graphics::BlitPatternAcross(NXSurface *sfc, int x_dst, int y_dst, int y_src, int height)
 {
-	drawtarget->BlitPatternAcross(sfc, x_dst, y_dst, y_src, height);
+    drawtarget->BlitPatternAcross(sfc, x_dst, y_dst, y_src, height);
 }
 
 
 void Graphics::DrawBatchBegin(size_t max_count)
 {
-	if (NULL != current_batch_drawtarget)
-		assert(false && "batch operation already begun");
+    if (NULL != current_batch_drawtarget)
+        assert(false && "batch operation already begun");
 
-	current_batch_drawtarget = drawtarget;
+    current_batch_drawtarget = drawtarget;
 
-	drawtarget->DrawBatchBegin(max_count);
+    drawtarget->DrawBatchBegin(max_count);
 }
 
 void Graphics::DrawBatchAdd(NXSurface *src, int dstx, int dsty, int srcx, int srcy, int wd, int ht)
 {
-	if (current_batch_drawtarget != drawtarget)
-		assert(false && "drawtarget has been changed during batch operation");
+    if (current_batch_drawtarget != drawtarget)
+        assert(false && "drawtarget has been changed during batch operation");
 
-	drawtarget->DrawBatchAdd(src, dstx, dsty, srcx, srcy, wd, ht);
+    drawtarget->DrawBatchAdd(src, dstx, dsty, srcx, srcy, wd, ht);
 }
 
 void Graphics::DrawBatchAdd(NXSurface *src, int x, int y)
 {
-	if (current_batch_drawtarget != drawtarget)
-		assert(false && "drawtarget has been changed during batch operation");
+    if (current_batch_drawtarget != drawtarget)
+        assert(false && "drawtarget has been changed during batch operation");
 
-	drawtarget->DrawBatchAdd(src, x, y);
+    drawtarget->DrawBatchAdd(src, x, y);
 }
 
 void Graphics::DrawBatchAddPatternAcross(NXSurface *sfc, int x_dst, int y_dst, int y_src, int height)
 {
     if (current_batch_drawtarget != drawtarget)
-		assert(false && "drawtarget has been changed during batch operation");
-    
-	drawtarget->DrawBatchAddPatternAcross(sfc, x_dst, y_dst, y_src, height);
+        assert(false && "drawtarget has been changed during batch operation");
+
+    drawtarget->DrawBatchAddPatternAcross(sfc, x_dst, y_dst, y_src, height);
 }
 
 void Graphics::DrawBatchEnd()
 {
-	if (current_batch_drawtarget != drawtarget)
-		assert(false && "drawtarget has been changed during batch operation");
+    if (current_batch_drawtarget != drawtarget)
+        assert(false && "drawtarget has been changed during batch operation");
 
-	current_batch_drawtarget = NULL;
+    current_batch_drawtarget = NULL;
 
-	drawtarget->DrawBatchEnd();
+    drawtarget->DrawBatchEnd();
 }
 
 
@@ -408,27 +410,27 @@ void c------------------------------() {}
 
 void Graphics::DrawLine(int x1, int y1, int x2, int y2, NXColor color)
 {
-	drawtarget->DrawLine(x1, y1, x2, y2, color);
+    drawtarget->DrawLine(x1, y1, x2, y2, color);
 }
 
 void Graphics::DrawRect(int x1, int y1, int x2, int y2, NXColor color)
 {
-	drawtarget->DrawRect(x1, y1, x2, y2, color);
+    drawtarget->DrawRect(x1, y1, x2, y2, color);
 }
 
 void Graphics::FillRect(int x1, int y1, int x2, int y2, NXColor color)
 {
-	drawtarget->FillRect(x1, y1, x2, y2, color);
+    drawtarget->FillRect(x1, y1, x2, y2, color);
 }
 
 void Graphics::DrawPixel(int x, int y, NXColor color)
 {
-	drawtarget->DrawPixel(x, y, color);
+    drawtarget->DrawPixel(x, y, color);
 }
 
 void Graphics::ClearScreen(NXColor color)
 {
-	drawtarget->Clear(color.r, color.g, color.b);
+    drawtarget->Clear(color.r, color.g, color.b);
 }
 
 /*
@@ -437,22 +439,22 @@ void c------------------------------() {}
 
 void Graphics::DrawRect(int x1, int y1, int x2, int y2, uint8_t r, uint8_t g, uint8_t b)
 {
-	drawtarget->DrawRect(x1, y1, x2, y2, r, g, b);
+    drawtarget->DrawRect(x1, y1, x2, y2, r, g, b);
 }
 
 void Graphics::FillRect(int x1, int y1, int x2, int y2, uint8_t r, uint8_t g, uint8_t b)
 {
-	drawtarget->FillRect(x1, y1, x2, y2, r, g, b);
+    drawtarget->FillRect(x1, y1, x2, y2, r, g, b);
 }
 
 void Graphics::DrawPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b)
 {
-	drawtarget->DrawPixel(x, y, r, g, b);
+    drawtarget->DrawPixel(x, y, r, g, b);
 }
 
 void Graphics::ClearScreen(uint8_t r, uint8_t g, uint8_t b)
 {
-	drawtarget->Clear(r, g, b);
+    drawtarget->Clear(r, g, b);
 }
 
 /*
@@ -461,27 +463,27 @@ void c------------------------------() {}
 
 void Graphics::set_clip_rect(int x, int y, int w, int h)
 {
-	drawtarget->set_clip_rect(x, y, w, h);
+    drawtarget->set_clip_rect(x, y, w, h);
 }
 
 void Graphics::set_clip_rect(NXRect *rect)
 {
-	drawtarget->set_clip_rect(rect);
+    drawtarget->set_clip_rect(rect);
 }
 
 void Graphics::clear_clip_rect()
 {
-	drawtarget->clear_clip_rect();
+    drawtarget->clear_clip_rect();
 }
 
 bool Graphics::is_set_clip()
 {
-	return drawtarget->is_set_clip();
+    return drawtarget->is_set_clip();
 }
 
 void Graphics::clip(SDL_Rect& srcrect, SDL_Rect& dstrect)
 {
-	drawtarget->clip(srcrect, dstrect);
+    drawtarget->clip(srcrect, dstrect);
 }
 
 

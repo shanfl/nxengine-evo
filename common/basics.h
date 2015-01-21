@@ -5,13 +5,13 @@
 #include <sdl.h>
 
 #ifdef __clang__
-	#define MAXPATHLEN	256
+#define MAXPATHLEN	256
 #else
-	//#include <sys/param.h>	// MAXPATHLEN
+//#include <sys/param.h>	// MAXPATHLEN
 #endif
 
 #ifndef PATH_MAX
-	#define PATH_MAX	259
+#define PATH_MAX	259
 #endif
 
 #define MAXPATHLEN	256

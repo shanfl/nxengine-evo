@@ -7,19 +7,19 @@
 class CoreBoss : public StageBoss
 {
 public:
-	void OnMapEntry();
-	void OnMapExit();
-	void Run();
+    void OnMapEntry();
+    void OnMapExit();
+    void Run();
 
 private:
-	void RunOpenMouth();
-	
-	void StartWaterStream(void);
-	void StopWaterStream(void);
-	
-	Object *o;
-	Object *pieces[8];
-	int hittimer;
+    void RunOpenMouth();
+
+    void StartWaterStream(void);
+    void StopWaterStream(void);
+
+    Object *o;
+    Object *pieces[8];
+    int hittimer;
 };
 
 void ai_core_front(Object *o);
