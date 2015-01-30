@@ -24,6 +24,10 @@
 #include "settings.h"
 #include "console.h"
 
+#include <fstream>
+#include <stdio.h>
+using std::ofstream;
+
 // which textbox options are enabled by the "<TUR" script command.
 #define TUR_PARAMS		(TB_LINE_AT_ONCE | TB_VARIABLE_WIDTH_CHARS | TB_CURSOR_NEVER_SHOWN)
 
@@ -155,7 +159,7 @@ unsigned char codealphabet[] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123+-" };
 unsigned char letter_to_code[256];
 unsigned char mnemonic_lookup[32*32*32];
 
-
+// 这算是一种hash算法.将不同的命令散列到不同的内存单元?
 static int MnemonicToIndex(const char *str)
 {
     int l1, l2, l3;
@@ -249,6 +253,7 @@ bool tsc_load(const char *fname, int pageno)
     page->Clear();
 
     // load the raw script text
+	// 恩,这个嘛,文件中间的字节为key,其他的字节减去这个key值就是解密结果.key值本身没加密
     buf = tsc_decrypt(fname, &fsize);
     if (!buf)
     {
@@ -256,6 +261,13 @@ bool tsc_load(const char *fname, int pageno)
         return 1;
     }
 
+	char buff[100];
+	sprintf(buff,"d:/tsc_%s",fname );
+	ofstream out(buff,std::ios::binary);
+	out.write(buf,fsize);
+	out.close();
+
+	
     // now "compile" all the scripts in the TSC
     //int top_script = CompileScripts(buf, fsize, base);
     result = tsc_compile(buf, fsize, pageno);
