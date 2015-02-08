@@ -1,0 +1,1198 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\CaveEditor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\CaveEditor.ico"
+ICON_WATER              ICON                    "res\\ico00001.ico"
+ICON_SOLID              ICON                    "res\\icon_sol.ico"
+ICON_SEEN               ICON                    "res\\ico00002.ico"
+ICON_HIDDEN             ICON                    "res\\icon_see.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About CaveEditor"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "CaveEditor Version 0.98d",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2006, 2009",IDC_STATIC,40,23,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,16,WS_GROUP
+    LTEXT           "Created by: David Shafer (Wistil)",IDC_STATIC,40,37,119,
+                    8
+END
+
+DIALOG_CAVEEDITOR_DIALOG DIALOGEX 0, 0, 462, 255
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "CaveEditor - The Cave Story Editor"
+MENU MENU_MAIN
+FONT 8, "MS Sans Serif", 400, 0, 0x0
+BEGIN
+    LISTBOX         LIST_MAPS,7,16,137,195,LBS_NOINTEGRALHEIGHT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add Map",BUTTON_MAP_ADD,7,216,62,14,WS_DISABLED
+    PUSHBUTTON      "Copy Map",BUTTON_MAP_COPY,82,216,62,14,WS_DISABLED
+    PUSHBUTTON      "Edit Map",BUTTON_MAP_EDIT,7,234,62,14,WS_DISABLED
+    PUSHBUTTON      "Delete Map",BUTTON_MAP_DELETE,82,234,62,14,WS_DISABLED
+    LISTBOX         LIST_TILESETS,149,16,72,155,LBS_NOINTEGRALHEIGHT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add Tile Set",BUTTON_TILESET_ADD,149,178,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Copy Tile Set",BUTTON_TILESET_COPY,149,197,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Edit Tile Set",BUTTON_TILESET_EDIT,149,216,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Delete Tile Set",BUTTON_TILESET_DELETE,149,234,72,14,
+                    WS_DISABLED
+    LISTBOX         LIST_SPRITES,227,16,72,155,LBS_NOINTEGRALHEIGHT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add Sprite Set",BUTTON_SPRITES_ADD,227,178,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Copy Sprite Set",BUTTON_SPRITES_COPY,227,197,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Edit Sprite Set",BUTTON_SPRITES_EDIT,227,216,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Delete Sprite Set",BUTTON_SPRITES_DELETE,227,234,72,14,
+                    WS_DISABLED
+    LISTBOX         LIST_BACKGROUNDS,306,16,72,155,LBS_NOINTEGRALHEIGHT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add Background",BUTTON_BACKGROUND_ADD,306,178,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Copy Background",BUTTON_BACKGROUND_COPY,306,197,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Edit Background",BUTTON_BACKGROUND_EDIT,306,216,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Delete Background",BUTTON_BACKGROUND_DELETE,306,234,72,
+                    14,WS_DISABLED
+    LISTBOX         LIST_SCRIPTS,383,76,72,154,LBS_NOINTEGRALHEIGHT | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Edit Script",BUTTON_SCRIPT_EDIT,383,234,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Game Settings",BUTTON_GAME_SETTINGS,383,13,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Edit NPC table",BUTTON_NPCTABLE_EDIT,383,31,72,14,
+                    WS_DISABLED
+    PUSHBUTTON      "Edit *.pbm",BUTTON_EDIT_PBM,383,50,72,14
+    GROUPBOX        "Maps",STATIC_MAPS,7,7,137,204,WS_DISABLED
+    GROUPBOX        "Tile Sets",STATIC_TILESETS,149,7,72,164,WS_DISABLED
+    GROUPBOX        "Sprite Sets",STATIC_SPRITES,227,7,72,164,WS_DISABLED
+    GROUPBOX        "Backgrounds",STATIC_BACKGROUNDS,306,7,72,164,
+                    WS_DISABLED
+    GROUPBOX        "Scripts",STATIC_SCRIPTS,383,66,72,164,WS_DISABLED
+END
+
+DIALOG_MAP_EDIT DIALOGEX 0, 0, 497, 294
+STYLE DS_SETFONT | DS_NOIDLEMSG | DS_FIXEDSYS | WS_MINIMIZEBOX | 
+    WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Map Editor"
+MENU MENU_MAP_EDIT
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Display",IDC_STATIC,7,0,127,67
+    CONTROL         "Edit Map",RADIO_MAP,"Button",BS_AUTORADIOBUTTON,12,10,
+                    43,10
+    CONTROL         "Edit Entities",RADIO_ENTITY,"Button",BS_AUTORADIOBUTTON,
+                    72,10,53,10
+    CONTROL         "Front Tiles",CHECK_FRONT_TILES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,21,53,10
+    CONTROL         "Back Tiles",CHECK_BACK_TILES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,32,47,10
+    CONTROL         "Background",CHECK_BACKGROUND,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,43,53,10
+    CONTROL         "Tile Types",CHECK_TILE_TYPES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,54,48,10
+    CONTROL         "Entities",CHECK_ENTITIES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,72,21,39,10
+    CONTROL         "Entity Text",CHECK_ENTITY_TEXT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,72,32,51,10
+    CONTROL         "Entity Sprites",CHECK_ENTITY_SPRITES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,72,43,59,10
+    CONTROL         "Tile Grid",CHECK_TILE_GRID,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,72,54,41,10
+    CONTROL         "",FRAME_MAP,"Static",SS_BLACKFRAME,7,70,479,213,
+                    WS_EX_TRANSPARENT
+    SCROLLBAR       SCROLLBAR_HORZ,7,283,479,11
+    SCROLLBAR       SCROLLBAR_VERT,486,70,10,213,SBS_VERT
+    GROUPBOX        "Info",TEXT_INFO,138,0,184,67
+    CONTROL         "",FRAME_INFO,"Static",SS_BLACKFRAME,142,9,176,55
+    CONTROL         "",FRAME_TILESET,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,
+                    325,0,161,67
+END
+
+DIALOG_TILE_SELECT DIALOGEX 0, 0, 144, 81
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Tileset"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+DIALOG_PALETTE_SELECT DIALOGEX 0, 0, 172, 55
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Palette"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Index: 0",TEXT_INDEX,56,3,38,8
+    LTEXT           "Red: 0",TEXT_RED,56,11,38,8
+    LTEXT           "Green:",TEXT_GREEN,56,20,38,8
+    LTEXT           "Blue:",TEXT_BLUE,56,29,38,8
+    CONTROL         "",SLIDER_BLUE,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | NOT WS_VISIBLE | WS_TABSTOP,7,34,96,14
+    CONTROL         "",SLIDER_GREEN,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | NOT WS_VISIBLE | WS_TABSTOP,7,21,96,14
+    CONTROL         "",SLIDER_RED,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | 
+                    NOT WS_VISIBLE | WS_TABSTOP,7,7,96,14
+    CONTROL         "",FRAME_COLOR,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,
+                    129,8,36,41
+    LTEXT           "Red",TEXT_RED2,104,10,14,8,NOT WS_VISIBLE
+    LTEXT           "Green",TEXT_GREEN2,104,24,20,8,NOT WS_VISIBLE
+    LTEXT           "Blue",TEXT_BLUE2,104,38,14,8,NOT WS_VISIBLE
+    CONTROL         "",FRAME_24BIT,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,0,
+                    0,171,55
+END
+
+DIALOG_SCRIPT_EDITOR DIALOGEX 0, 0, 524, 334
+STYLE DS_SETFONT | DS_NOIDLEMSG | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_CAPTION | 
+    WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_ACCEPTFILES | WS_EX_APPWINDOW
+CAPTION "Script Editor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    CONTROL         "",EDIT_SCRIPT,"RichEdit20W",WS_BORDER | WS_VSCROLL | 
+                    WS_HSCROLL | WS_TABSTOP | 0x1084,7,7,374,301
+    PUSHBUTTON      "Check Syntax",BUTTON_SYNTAX,7,314,50,14
+    PUSHBUTTON      "Save",BUTTON_SAVE,62,314,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,169,314,50,14,NOT WS_TABSTOP
+    PUSHBUTTON      "Hide Command Details",BUTTON_DETAILS,292,314,89,14
+    LISTBOX         LIST_COMMANDS,398,109,115,216,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "",TEXT_COMMAND,437,16,76,8
+    LTEXT           "",TEXT_SYNTAX,405,25,106,10
+    LTEXT           "Command:",TEXT_SCRIPT_COMMAND,401,16,35,8
+    LTEXT           "Description:",TEXT_SCRIPT_DESC,399,44,39,8
+    LTEXT           "",TEXT_DESC,399,53,114,33
+    GROUPBOX        "Selected Command",TEXT_SCRIPT_FRAME1,394,7,123,88,0,
+                    WS_EX_TRANSPARENT
+    GROUPBOX        "Available Commands",TEXT_SCRIPT_FRAME2,394,98,123,230,0,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",FRAME_SCRIPT_HELP,"Static",SS_BLACKFRAME | NOT 
+                    WS_VISIBLE,387,0,136,334
+END
+
+DIALOG_PBM_EDITOR DIALOGEX 0, 0, 442, 310
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | 
+    WS_VSCROLL | WS_HSCROLL | WS_SYSMENU | WS_THICKFRAME
+CAPTION "PBM Editor"
+MENU MENU_PBM
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+DIALOG_DISPLAY_VIEW DIALOGEX 0, 0, 62, 49
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+DIALOG_MAP_PROPERITES DIALOGEX 0, 0, 308, 215
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Map Properties"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        EDIT_MAP_NAME,61,17,66,14
+    EDITTEXT        EDIT_MAP_CAPTION,61,33,140,14
+    EDITTEXT        EDIT_MAP_SIZEX,237,33,23,14,ES_NUMBER
+    EDITTEXT        EDIT_MAP_SIZEY,272,33,23,14,ES_NUMBER
+    COMBOBOX        COMBO_MAP_BACKGROUND_SCROLL,61,68,131,104,
+                    CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        COMBO_MAP_BACKGROUND,61,83,131,85,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        COMBO_MAP_TILESET,75,114,68,116,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        COMBO_MAP_NPC_TILESET1,75,133,68,97,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        COMBO_MAP_NPC_TILESET2,75,149,68,90,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        COMBO_BOSS_ID,75,182,148,136,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,251,175,50,14,NOT WS_TABSTOP
+    PUSHBUTTON      "Cancel",IDCANCEL,251,194,50,14,NOT WS_TABSTOP
+    LTEXT           "Caption",IDC_STATIC,28,36,26,8
+    LTEXT           "Map Tileset",IDC_STATIC,22,116,37,8
+    LTEXT           "Scroll Type",IDC_STATIC,17,69,36,8
+    LTEXT           "Image",IDC_STATIC,32,82,21,8
+    LTEXT           "NPC Tileset 1",IDC_STATIC,22,135,43,8
+    LTEXT           "NPC Tileset 2",IDC_STATIC,22,151,43,8
+    LTEXT           "Map Name",IDC_STATIC,20,20,34,8
+    LTEXT           "Boss Fight ID",IDC_STATIC,22,184,43,8
+    GROUPBOX        "General",IDC_STATIC,7,7,294,46
+    GROUPBOX        "Background",IDC_STATIC,7,56,294,47
+    GROUPBOX        "Tileset",IDC_STATIC,7,106,294,61
+    GROUPBOX        "Misc",IDC_STATIC,7,169,225,39
+    LTEXT           "Map Size",IDC_STATIC,205,36,29,8
+    CTEXT           "X",IDC_STATIC,262,36,8,8
+    CONTROL         "",FRAME_BACKGROUND,"Static",SS_BLACKFRAME,198,65,95,32
+    CONTROL         "",FRAME_TILESET,"Static",SS_BLACKFRAME,149,115,144,46
+END
+
+DIALOG_MAP_INFO DIALOGEX 0, 0, 146, 55
+STYLE DS_SETFONT | DS_NOIDLEMSG | DS_FIXEDSYS | WS_CHILD
+EXSTYLE WS_EX_TOOLWINDOW
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Draw",RADIO_DRAW_TILES,"Button",BS_AUTORADIOBUTTON,7,7,
+                    33,10
+    CONTROL         "Fill",RADIO_FILL_TILES,"Button",BS_AUTORADIOBUTTON,7,21,
+                    24,10
+    CONTROL         "",FRAME_TILE_VIEW,"Static",SS_BLACKFRAME,88,3,53,49,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Show Tileset",BUTTON_SHOW_TILESET,5,39,50,13
+    CONTROL         "Rectangle",RADIO_RECT_TILES,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFTTEXT | BS_RIGHT,33,21,48,10
+    CONTROL         "Replace",RADIO_REPLACE_TILES,"Button",
+                    BS_AUTORADIOBUTTON | BS_LEFTTEXT | BS_RIGHT,40,7,41,10
+END
+
+DIALOG_ENTITY_INFO DIALOGEX 0, 0, 176, 55
+STYLE DS_SETFONT | DS_NOIDLEMSG | DS_FIXEDSYS | WS_CHILD
+EXSTYLE WS_EX_TOOLWINDOW
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    RTEXT           "Type",IDC_STATIC,4,7,17,8
+    EDITTEXT        EDIT_EVENT_ID,34,39,25,12
+    RTEXT           "Event #",IDC_STATIC,4,41,27,8
+    EDITTEXT        EDIT_FLAG_ID,34,22,25,12
+    RTEXT           "Entity ID",IDC_STATIC,4,24,29,8
+    EDITTEXT        EDIT_FLAGS,87,20,25,12
+    PUSHBUTTON      "Flag Details",BUTTON_FLAG_DETAILS,67,37,45,14
+    RTEXT           "Flags",IDC_STATIC,67,22,18,8
+    COMBOBOX        COMBO_ENTITY_TYPE,25,4,147,175,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",FRAME_ENTITY,"Static",SS_BLACKFRAME,119,20,53,31
+END
+
+DIALOG_FLAG_DETAIL DIALOGEX 0, 0, 156, 210
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Entity Flag Details"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "0x0001 - Solid",CHECK_FLAG1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,7,142,8
+    CONTROL         "0x0002 - Not affected by tile 44",CHECK_FLAG2,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,18,142,8
+    CONTROL         "0x0004 - Invulnerable (Blink Sound)",CHECK_FLAG3,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,29,142,8
+    CONTROL         "0x0008 - Ignore solid (used on fliers)",CHECK_FLAG4,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,40,142,8
+    CONTROL         "0x0010 - Bouncy on top",CHECK_FLAG5,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,51,142,8
+    CONTROL         "0x0020 - Shootable",CHECK_FLAG6,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,62,142,8
+    CONTROL         "0x0040 - Special Solid?",CHECK_FLAG7,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,73,142,8
+    CONTROL         "0x0080 - Rear and top attack power 0",CHECK_FLAG8,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,84,142,8
+    CONTROL         "0x0100 - Option 1",CHECK_FLAG9,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,95,142,8
+    CONTROL         "0x0200 - Run script on death",CHECK_FLAG10,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,106,142,8
+    CONTROL         "0x0400 - ???",CHECK_FLAG11,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,117,142,8
+    CONTROL         "0x0800 - Appears once FlagID is set",CHECK_FLAG12,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,128,142,8
+    CONTROL         "0x1000 - Option 2",CHECK_FLAG13,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,139,142,8
+    CONTROL         "0x2000 - PC presses down to run script",CHECK_FLAG14,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,150,142,8
+    CONTROL         "0x4000 - Disappears once FlagID is set",CHECK_FLAG15,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,161,142,8
+    CONTROL         "0x8000 - Show Damage Numbers",CHECK_FLAG16,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,172,142,8
+    EDITTEXT        EDIT_FLAGS,65,189,26,14,ES_UPPERCASE
+    PUSHBUTTON      "Save",IDOK,7,189,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,99,189,50,14
+END
+
+DIALOG_GAME_SETTINGS DIALOGEX 0, 0, 334, 202
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Game Settings"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,277,181,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,220,181,50,14
+    EDITTEXT        EDIT_START_EVENT,64,99,27,13,ES_NUMBER
+    RTEXT           "Starting Event:",IDC_STATIC,14,101,50,8
+    EDITTEXT        EDIT_TITLE,54,7,152,14,ES_AUTOHSCROLL
+    RTEXT           "Program Title:",IDC_STATIC,7,9,46,8
+    EDITTEXT        EDIT_SAVE_FILE_NAME,60,181,56,14,ES_AUTOHSCROLL
+    RTEXT           "Save Game File:",IDC_STATIC,7,184,52,8
+    CONTROL         "Remove (C)Pixel requirement for Images",
+                    CHECK_NO_C_PIXEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,
+                    147,146,10
+    EDITTEXT        EDIT_PBM_EXT,86,164,30,14
+    RTEXT           "Image File Extension: *.",IDC_STATIC,7,166,78,8
+    EDITTEXT        EDIT_C_PIXEL,153,145,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "New Game Data",IDC_STATIC,7,27,199,109
+    RTEXT           "Starting HP:",IDC_STATIC,13,40,40,8
+    EDITTEXT        EDIT_START_HP,53,38,21,14,ES_NUMBER
+    EDITTEXT        EDIT_START_MAX_HP,86,38,21,14,ES_NUMBER
+    CTEXT           "/",IDC_STATIC,76,40,8,8
+    RTEXT           "Player Facing:",IDC_STATIC,18,58,46,8
+    EDITTEXT        EDIT_START_FACING,64,56,27,13,ES_NUMBER
+    CONTROL         "0x01",CHECK_FLAG1,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | BS_RIGHT | WS_TABSTOP,134,44,65,10
+    CONTROL         "Needs to be off",CHECK_FLAG2,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | BS_RIGHT | WS_TABSTOP,134,55,65,10
+    CONTROL         "0x04",CHECK_FLAG3,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | BS_RIGHT | WS_TABSTOP,134,66,65,10
+    CONTROL         "0x08",CHECK_FLAG4,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | BS_RIGHT | WS_TABSTOP,134,77,65,10
+    CONTROL         "0x10",CHECK_FLAG5,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | BS_RIGHT | WS_TABSTOP,134,88,65,10
+    CONTROL         "0x20",CHECK_FLAG6,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | BS_RIGHT | WS_TABSTOP,134,99,65,10
+    CONTROL         "0x40",CHECK_FLAG7,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | BS_RIGHT | WS_TABSTOP,134,110,65,10
+    CONTROL         "Needs to be on",CHECK_FLAG8,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | BS_RIGHT | WS_TABSTOP,134,121,65,10
+    GROUPBOX        "Starting Flags",IDC_STATIC,129,34,77,102
+    RTEXT           "Starting Map:",IDC_STATIC,14,71,44,8
+    EDITTEXT        EDIT_START_X,66,116,25,13,ES_NUMBER
+    RTEXT           "Starting Coords:",IDC_STATIC,11,119,54,8
+    EDITTEXT        EDIT_START_Y,101,116,25,13,ES_NUMBER
+    COMBOBOX        COMBO_START_MAP,13,80,113,115,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CTEXT           ",",IDC_STATIC,92,119,8,8
+    GROUPBOX        "Title Screen Data",IDC_STATIC,205,27,122,109
+    EDITTEXT        EDIT_TITLE_EVENT,260,68,27,13,ES_NUMBER
+    RTEXT           "Title Event:",IDC_STATIC,210,70,38,8
+    RTEXT           "Title Screen Map:",IDC_STATIC,210,40,56,8
+    EDITTEXT        EDIT_TITLE_X,262,86,25,13,ES_NUMBER
+    RTEXT           "Title Coords:",IDC_STATIC,207,88,42,8
+    EDITTEXT        EDIT_TITLE_Y,297,86,25,13,ES_NUMBER
+    COMBOBOX        COMBO_TITLE_MAP,209,49,113,146,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CTEXT           ",",IDC_STATIC,288,88,8,8
+END
+
+DIALOG_TILESET_EDITOR DIALOGEX 0, 0, 334, 201
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU | WS_THICKFRAME
+CAPTION "Tileset Editor"
+MENU MENU_TILESET
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+DIALOG_RESIZE DIALOGEX 0, 0, 186, 47
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Resize"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    EDITTEXT        EDIT_WIDTH,45,7,40,14,ES_AUTOHSCROLL
+    EDITTEXT        EDIT_HEIGHT,45,26,40,14,ES_AUTOHSCROLL
+    RTEXT           "Width",TEXT_WIDTH,7,9,35,8
+    RTEXT           "Height",TEXT_HEIGHT,7,27,35,8
+    CONTROL         "Check2",CHECK_1,"Button",BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE | WS_TABSTOP,87,9,39,10
+    CONTROL         "Check2",CHECK_2,"Button",BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE | WS_TABSTOP,87,27,39,10
+END
+
+DIALOG_PALETTE_EDITOR DIALOGEX 0, 0, 172, 180
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Palette Editor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,162,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,115,162,50,14
+END
+
+DIALOG_NPC_TABLE_EDITOR DIALOGEX 0, 0, 334, 263
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_VSCROLL | WS_SYSMENU
+CAPTION "NPC Table Editor - Entity 0"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        EDIT_HP,59,15,40,14,ES_NUMBER
+    EDITTEXT        EDIT_ATTACK,59,31,40,14,ES_NUMBER
+    EDITTEXT        EDIT_XP,59,47,40,14,ES_NUMBER
+    CONTROL         "Solid",CHECK_FLAG1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,75,87,10,WS_EX_RIGHT
+    CONTROL         "Ignore Tile44",CHECK_FLAG2,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,85,87,10,WS_EX_RIGHT
+    CONTROL         "Invincible",CHECK_FLAG3,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,95,87,10,WS_EX_RIGHT
+    CONTROL         "Ignore Solid",CHECK_FLAG4,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,105,87,10,WS_EX_RIGHT
+    CONTROL         "Bouncy Top",CHECK_FLAG5,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,115,87,10,WS_EX_RIGHT
+    CONTROL         "Shootable",CHECK_FLAG6,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,125,87,10,WS_EX_RIGHT
+    CONTROL         "Special Solid",CHECK_FLAG7,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,135,87,10,WS_EX_RIGHT
+    CONTROL         "No Top or Back Attack",CHECK_FLAG8,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,145,87,10,WS_EX_RIGHT
+    CONTROL         "Player Friendly",CHECK_FLAG9,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,155,87,10,WS_EX_RIGHT
+    CONTROL         "Flag 10",CHECK_FLAG10,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,165,87,10,WS_EX_RIGHT
+    CONTROL         "Flag 11",CHECK_FLAG11,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,175,87,10,WS_EX_RIGHT
+    CONTROL         "Flag 12",CHECK_FLAG12,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,185,87,10,WS_EX_RIGHT
+    CONTROL         "Flag 13",CHECK_FLAG13,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,195,87,10,WS_EX_RIGHT
+    CONTROL         "Not Shootable",CHECK_FLAG14,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,205,87,10,WS_EX_RIGHT
+    CONTROL         "Flag 15",CHECK_FLAG15,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,215,87,10,WS_EX_RIGHT
+    CONTROL         "Shows Damage",CHECK_FLAG16,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,225,87,10,WS_EX_RIGHT
+    EDITTEXT        EDIT_HIT_TOP,151,29,21,14
+    EDITTEXT        EDIT_HIT_LEFT,117,45,21,14
+    EDITTEXT        EDIT_HIT_BOTTOM,151,64,21,14
+    EDITTEXT        EDIT_HIT_RIGHT,185,45,21,14
+    EDITTEXT        EDIT_DISPLAY_TOP,253,28,21,14
+    EDITTEXT        EDIT_DISPLAY_LEFT,219,44,21,14
+    EDITTEXT        EDIT_DISPLAY_BOTTOM,253,63,21,14
+    EDITTEXT        EDIT_DISPLAY_RIGHT,287,44,21,14
+    COMBOBOX        COMBO_TILESET,137,88,90,156,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        COMBO_HURT_SOUND,151,108,76,137,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        COMBO_DEATH_SOUND,157,128,70,98,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        COMBO_DEATH_GRAPHIC,161,148,66,97,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Save",BUTTON_SAVE,7,242,44,14
+    PUSHBUTTON      "Cancel",BUTTON_CANCEL,60,242,44,14
+    GROUPBOX        "Extra Info",IDC_STATIC,107,170,211,86
+    GROUPBOX        "Stats",IDC_STATIC,7,7,96,230
+    GROUPBOX        "Graphics and Effects",IDC_STATIC,107,7,211,162
+    RTEXT           "Health",IDC_STATIC,36,17,22,8
+    RTEXT           "Attack Power",IDC_STATIC,14,33,44,8
+    RTEXT           "Experience",IDC_STATIC,22,49,36,8
+    LTEXT           "Tileset",IDC_STATIC,112,90,22,8
+    LTEXT           "Hurt Sound",IDC_STATIC,112,110,37,8
+    LTEXT           "Death Sound",IDC_STATIC,112,130,42,8
+    LTEXT           "Death Graphic",IDC_STATIC,112,150,46,8
+    CONTROL         "",FRAME_NPC,"Static",SS_BLACKFRAME,231,88,81,73
+    GROUPBOX        "Hit Box (Red)",IDC_STATIC,113,18,98,64,BS_CENTER
+    GROUPBOX        "Display Box (Green)",IDC_STATIC,215,18,98,64,BS_CENTER
+    GROUPBOX        "Flags",IDC_STATIC,7,64,96,173
+    COMBOBOX        COMBO_TEST_TILESET,260,180,52,108,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Testing Tileset",IDC_STATIC,210,182,47,8
+    EDITTEXT        EDIT_DESC,155,235,156,14,ES_AUTOHSCROLL
+    RTEXT           "Description",IDC_STATIC,111,237,40,8
+    EDITTEXT        EDIT_DESC1,247,199,64,14
+    EDITTEXT        EDIT_DESC2,247,217,64,14
+    EDITTEXT        EDIT_OPTION1,111,191,90,14,ES_AUTOHSCROLL
+    EDITTEXT        EDIT_OPTION2,111,217,90,14,ES_AUTOHSCROLL
+    LTEXT           "Flag - Option 1 function",IDC_STATIC,111,180,76,8
+    LTEXT           "Flag- Option 2 function",IDC_STATIC,111,207,74,8
+    RTEXT           "Short Description",IDC_STATIC,207,206,38,19
+END
+
+DIALOG_OPTIONS DIALOGEX 0, 0, 198, 138
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Options"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,141,96,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,141,116,50,14
+    EDITTEXT        EDIT_SCALE,170,7,11,14,ES_CENTER | ES_NUMBER
+    LTEXT           "Default Zoom:",IDC_STATIC,123,9,46,8
+    LTEXT           "x",IDC_STATIC,183,9,8,8
+    CONTROL         "Zoom",RADIO_WHEEL_ZOOM,"Button",BS_AUTORADIOBUTTON,13,
+                    19,33,10
+    CONTROL         "Scroll",RADIO_WHEEL_SCROLL,"Button",BS_AUTORADIOBUTTON,
+                    49,19,33,10
+    CONTROL         "Seperate window for tileset selection",
+                    CHECK_TILESET_WINDOW,"Button",BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE | WS_DISABLED | WS_TABSTOP,7,77,134,10
+    EDITTEXT        EDIT_TILESET_SCALE,170,28,11,14,ES_CENTER | ES_NUMBER
+    LTEXT           "Default Tileset Zoom:",IDC_STATIC,100,31,69,8
+    LTEXT           "x",IDC_STATIC,183,31,8,8
+    CONTROL         "",SLIDER_ALPHA,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_TABSTOP,9,100,95,13
+    GROUPBOX        "Mouse Wheel Function",IDC_STATIC,7,7,85,29
+    GROUPBOX        "Tile Type Display Opacity",IDC_STATIC,7,87,124,43
+    LTEXT           "Static",TEXT_ALPHA,105,101,20,8
+    CONTROL         "",TEXT_ALPHA_TEST_AREA,"Static",SS_WHITERECT,15,115,108,
+                    11
+    CONTROL         "Remove Read Only Status From Files",CHECK_READ_ONLY,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,48,134,10
+    EDITTEXT        EDIT_COLORDEPTH,69,62,20,13,ES_AUTOHSCROLL | ES_READONLY | 
+                    ES_NUMBER
+    LTEXT           "Display color depth",IDC_STATIC,7,64,62,8
+    LTEXT           "Bit",IDC_STATIC,91,64,9,8
+END
+
+DIALOG_TEXT DIALOGEX 0, 0, 180, 28
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "New Name"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,123,7,50,14
+    EDITTEXT        EDIT_TEXT,7,7,106,14,ES_AUTOHSCROLL
+END
+
+DIALOG_WEAPON_EDITOR DIALOGEX 0, 0, 201, 193
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Weapon Editor - Weapon ID 0"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        EDIT_WEP_DAMAGE,51,18,22,12,ES_NUMBER
+    EDITTEXT        EDIT_WEP_HITS,51,31,22,12,ES_NUMBER
+    EDITTEXT        EDIT_WEP_RANGE,51,44,22,12,ES_NUMBER
+    EDITTEXT        EDIT_WEP_SHOT_WIDTH,39,60,27,12,ES_NUMBER
+    EDITTEXT        EDIT_WEP_SHOT_HEIGHT,78,60,27,12,ES_NUMBER
+    EDITTEXT        EDIT_WEP_WALL_WIDTH,85,77,20,12,ES_NUMBER
+    EDITTEXT        EDIT_WEP_WALL_HEIGHT,85,91,20,12,ES_NUMBER
+    CONTROL         "Flag 0x01",CHECK_FLAG01,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,113,19,66,10
+    CONTROL         "Flag 0x02",CHECK_FLAG02,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,113,29,66,10
+    CONTROL         "Ignore Solid",CHECK_FLAG04,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,113,39,66,10
+    CONTROL         "No Destroy Solid",CHECK_FLAG08,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,113,49,66,10
+    CONTROL         "Flag 0x10",CHECK_FLAG10,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,113,59,66,10
+    CONTROL         "Break Blocks",CHECK_FLAG20,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,113,69,66,10
+    CONTROL         "Pierce Blocks",CHECK_FLAG40,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,113,79,66,10
+    CONTROL         "Flag 0x80",CHECK_FLAG80,"Button",BS_AUTOCHECKBOX | 
+                    BS_LEFTTEXT | WS_TABSTOP,113,89,66,10
+    CONTROL         "",FRAME_WEP_IMAGE,"Static",SS_BLACKFRAME | NOT 
+                    WS_VISIBLE,14,141,32,32
+    LTEXT           "Level:",IDC_STATIC,79,19,20,8
+    LTEXT           "1",TEXT_WEP_LEVEL,100,19,8,8
+    RTEXT           "Damage:",IDC_STATIC,14,19,33,8
+    RTEXT           "# of Hits:",IDC_STATIC,14,32,33,8
+    RTEXT           "Range:",IDC_STATIC,14,45,33,8
+    RTEXT           "Size:",IDC_STATIC,14,61,24,8
+    CTEXT           "X",IDC_STATIC,68,61,8,8
+    GROUPBOX        "Bullet Behavior",IDC_STATIC,7,7,187,117
+    RTEXT           "Wall Collisions Width:",IDC_STATIC,14,78,70,8
+    RTEXT           "Wall Collisions Height:",IDC_STATIC,14,92,70,8
+    GROUPBOX        "Graphical Info",IDC_STATIC,7,128,152,58
+    RTEXT           "Graphic Offset - Left:",IDC_STATIC,47,140,79,8
+    RTEXT           "Graphic Offset - Right:",IDC_STATIC,47,154,79,8
+    RTEXT           "Graphic Offset - Vertial:",IDC_STATIC,47,167,79,8
+    EDITTEXT        EDIT_WEP_LEFT_GRPHIC_OFFSET,130,140,22,12,ES_NUMBER
+    EDITTEXT        EDIT_WEP_RIGHT_GRPHIC_OFFSET,130,154,22,12,ES_NUMBER
+    EDITTEXT        EDIT_WEP_VERT_GRPHIC_OFFSET,130,167,22,12,ES_NUMBER
+    PUSHBUTTON      "Next >",BUTTON_NEXT,164,151,30,14
+    PUSHBUTTON      "< Prev",BUTTON_PREV,164,132,30,14
+    PUSHBUTTON      "OK",BUTTON_OK,164,172,30,14
+    RTEXT           "Engery required to level up:",IDC_STATIC,14,108,91,8
+    EDITTEXT        EDIT_WEP_EXP,106,107,20,12,ES_NUMBER
+END
+
+DIALOG_NPC_EXE_EDITOR DIALOGEX 0, 0, 458, 305
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "NPX EXE Data Editor - Entity 0"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,401,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,401,24,50,14
+    EDITTEXT        EDIT_NPC_CODE,7,7,168,291,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Static",TEXT_OPCODE_DESC,356,44,95,64
+    PUSHBUTTON      "Next >",BUTTON_NEXT,413,284,38,14
+    PUSHBUTTON      "< Prev",BUTTON_PREV,372,284,38,14
+    EDITTEXT        EDIT_NPC_CODE_RAW,179,7,168,291,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | 
+                    WS_VSCROLL
+END
+
+DIALOG_MAP_REORDER DIALOGEX 0, 0, 168, 294
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Reorder Maps"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Save",IDOK,7,273,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,111,273,50,14
+    LISTBOX         LIST_MAPS,7,7,154,256,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "FileDescription", "The Cave Story editor"
+            VALUE "FileVersion", "0.98c"
+            VALUE "InternalName", "CaveEditor.exe"
+            VALUE "LegalCopyright", "(c) David Shafer"
+            VALUE "OriginalFilename", "CaveEditor.exe"
+            VALUE "ProductName", "CaveEditor"
+            VALUE "ProductVersion", "0.98c"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    DIALOG_CAVEEDITOR_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 455
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 248
+    END
+
+    DIALOG_MAP_EDIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 486
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 283
+    END
+
+    DIALOG_TILE_SELECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 137
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 74
+    END
+
+    DIALOG_PALETTE_SELECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 165
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    DIALOG_SCRIPT_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 517
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 328
+    END
+
+    DIALOG_PBM_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 421
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 291
+    END
+
+    DIALOG_DISPLAY_VIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 55
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 42
+    END
+
+    DIALOG_MAP_PROPERITES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 301
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 208
+    END
+
+    DIALOG_MAP_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 139
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    DIALOG_ENTITY_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 169
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    DIALOG_FLAG_DETAIL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 203
+    END
+
+    DIALOG_GAME_SETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 195
+    END
+
+    DIALOG_TILESET_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 194
+    END
+
+    DIALOG_RESIZE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 40
+    END
+
+    DIALOG_PALETTE_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 165
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 173
+    END
+
+    DIALOG_NPC_TABLE_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 318
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 256
+    END
+
+    DIALOG_OPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 191
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 131
+    END
+
+    DIALOG_TEXT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 21
+    END
+
+    DIALOG_WEAPON_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 194
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 186
+    END
+
+    DIALOG_NPC_EXE_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 451
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 298
+    END
+
+    DIALOG_MAP_REORDER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 161
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 287
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+MENU_MAIN MENU 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Save",                        ID_FILE_SAVE, GRAYED
+        MENUITEM "Save and Test",               ID_FILE_TEST, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Load",                        ID_FILE_LOAD
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        ID_FILE_EXIT
+    END
+    POPUP "Data"
+    BEGIN
+        MENUITEM "Reorder Maplist",             ID_DATA_REORDERMAPLIST
+        , GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Bullet Data",                 ID_DATA_BULLETDATA, GRAYED
+        MENUITEM "NPC EXE Data (display only)", ID_DATA_NPCEXEDATA, GRAYED
+    END
+    MENUITEM "Options",                     ID_OPTIONS
+    POPUP "Help"
+    BEGIN
+        MENUITEM "Contents",                    ID_HELP_CONTENTS, GRAYED
+        MENUITEM "About",                       ID_HELP_ABOUT
+    END
+END
+
+MENU_LIST MENU 
+BEGIN
+    POPUP "Map List"
+    BEGIN
+        MENUITEM "Edit Map",                    ID_MAPLIST_EDITMAP, GRAYED
+        MENUITEM "Edit Map Properties",         ID_MAPLIST_EDITMAPPROPERTIES
+        , GRAYED
+        MENUITEM "Edit Map Script",             ID_MAPLIST_EDITMAPSCRIPT
+        , GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Copy Map",                    ID_MAPLIST_COPYMAP, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Add Map",                     ID_MAPLIST_ADDMAP, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Delete Map",                  ID_MAPLIST_DELETEMAP, GRAYED
+    END
+    POPUP "Tile Set List"
+    BEGIN
+        MENUITEM "Edit Tile Set",               ID_TILESETLIST_EDITTILESET
+        , GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Copy Tile Set",               ID_TILESETLIST_COPYTILESET
+        , GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Delete Tile Set",             ID_TILESETLIST_DELETETILESET
+        , GRAYED
+    END
+    POPUP "Sprite Set List"
+    BEGIN
+        MENUITEM "Edit Sprite Set",             ID_SPRITESETLIST_EDITSPRITESET
+        , GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Copy Sprite Set",             ID_SPRITESETLIST_COPYSPRITESET
+        , GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Delete Sprite Set",           ID_SPRITESETLIST_DELETESPRITESET
+        , GRAYED
+    END
+    POPUP "Background List"
+    BEGIN
+        MENUITEM "Edit Background",             ID_BACKGROUNDLIST_EDITBACKGROUND
+        , GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Copy Background",             ID_BACKGROUNDLIST_COPYBACKGROUND
+        , GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Delete Background",           ID_BACKGROUNDLIST_DELETEBACKGROUND
+        , GRAYED
+    END
+    POPUP "Script List"
+    BEGIN
+        MENUITEM "Edit Script",                 ID_SCRIPTLIST_EDITSCRIPT
+        , GRAYED
+    END
+END
+
+MENU_PBM MENU 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Load",                        ID_FILE_LOAD
+        MENUITEM SEPARATOR
+        MENUITEM "Save",                        ID_FILE_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        ID_FILE_EXIT
+    END
+    POPUP "View"
+    BEGIN
+        MENUITEM "Grid Off",                    ID_VIEW_GRIDOFF, CHECKED
+        MENUITEM "16x16 Grid",                  ID_VIEW_16X16GRID
+        MENUITEM "32x32 Grid",                  ID_VIEW_32X32GRID
+        MENUITEM "64x64 Grid",                  ID_VIEW_64X64GRID
+    END
+    POPUP "Tools"
+    BEGIN
+        MENUITEM "Resize",                      ID_TOOLS_RESIZE
+        MENUITEM "Edit Palette",                ID_TOOLS_EDITPALETTE
+    END
+END
+
+MENU_MAP_EDIT_CONTEXT MENU 
+BEGIN
+    POPUP "Map"
+    BEGIN
+        MENUITEM "Shift Map (Ctrl+F)",          ID_MAP_SHIFTMAP
+        MENUITEM "Set Start Location",          ID_MAP_SETSTARTLOCATION
+    END
+    POPUP "Entity Selected"
+    BEGIN
+        MENUITEM "Add Entity (Insert)",         ID_ENTITY_ADDENTITY
+        MENUITEM "Delete Entity (Delete)",      ID_ENTITY_DELETEENTITY
+        MENUITEM "Copy Entity (Ctrl + C)",      ID_ENTITY_COPYENTITY
+        MENUITEM "Set Start Location",          ID_MAP_SETSTARTLOCATION
+    END
+    POPUP "Entity Not Selected"
+    BEGIN
+        MENUITEM "Add Entity (Insert)",         ID_ENTITY_ADDENTITY
+        MENUITEM "Paste Entity (Ctrl+V)",       ID_ENTITY_PASTEENTITY
+        MENUITEM "Set Start Location",          ID_MAP_SETSTARTLOCATION
+    END
+END
+
+MENU_TILESET MENU 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Save",                        ID_FILE_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        ID_FILE_EXIT
+    END
+    POPUP "View"
+    BEGIN
+        MENUITEM "Grid Off",                    ID_VIEW_GRIDOFF
+        MENUITEM "16x16 Grid",                  ID_VIEW_16X16GRID, CHECKED
+        MENUITEM "32x32 Grid",                  ID_VIEW_32X32GRID
+        MENUITEM "64x64 Grid",                  ID_VIEW_64X64GRID
+    END
+    POPUP "Tools"
+    BEGIN
+        MENUITEM "Resize",                      32845
+        MENUITEM "Edit Palette",                32846
+    END
+END
+
+MENU_MAP_EDIT MENU 
+BEGIN
+    POPUP "Map"
+    BEGIN
+        MENUITEM "Shift Map (Ctrl+F)",          ID_MAP_SHIFTMAP
+        MENUITEM SEPARATOR
+        MENUITEM "Edit Script",                 ID_MAP_EDITSCRIPT
+        MENUITEM "Properties",                  ID_MAP_PROPERTIES
+        MENUITEM SEPARATOR
+        MENUITEM "Save (Ctrl+S)",               ID_MAP_SAVE
+    END
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Undo (Ctrl+Z)",               ID_EDIT_UNDO
+        MENUITEM "Redo (Ctrl+Y)",               ID_EDIT_REDO
+    END
+    POPUP "Entities"
+    BEGIN
+        POPUP "Sort entitiies by"
+        BEGIN
+            MENUITEM "Category",                    ID_SORTENTITIIESBY_CATEGORY
+
+            MENUITEM "Name",                        ID_SORTENTITIIESBY_NAME
+            MENUITEM "ID number",                   32884
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Delete All",                  ID_ENTITIES_DELETEALL
+    END
+    POPUP "Zoom"
+    BEGIN
+        MENUITEM "0.5x",                        ID_ZOOM_05X
+        MENUITEM "1x",                          ID_ZOOM_1X
+        MENUITEM "2x",                          ID_ZOOM_2X
+        MENUITEM "3x",                          ID_ZOOM_3X
+        MENUITEM "4x",                          ID_ZOOM_4X
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+CURSOR_PIXEL            CURSOR                  "res\\cursor1.cur"
+CURSOR_FILL             CURSOR                  "res\\cursor2.cur"
+CURSOR_RECT             CURSOR                  "res\\cursor3.cur"
+CURSOR_REPLACE          CURSOR                  "res\\cursor4.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+DIALOG_MAP_EDIT ACCELERATORS 
+BEGIN
+    VK_INSERT,      ID_ENTITY_ADDENTITY,    VIRTKEY, NOINVERT
+    "C",            ID_ENTITY_COPYENTITY,   VIRTKEY, CONTROL, NOINVERT
+    VK_DELETE,      ID_ENTITY_DELETEENTITY, VIRTKEY, NOINVERT
+    "V",            ID_ENTITY_PASTEENTITY,  VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_MAP_SAVE,            VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_MAP_SHIFTMAP,        VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EDIT_REDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+DIALOG_CAVEEDITOR_DIALOG ACCELERATORS 
+BEGIN
+    VK_DELETE,      ID_MAPLIST_DELETEMAP,   VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About CaveEditor..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\CaveEditor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

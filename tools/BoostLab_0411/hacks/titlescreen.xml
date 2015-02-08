@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hack name="Title Screen Rendering">
+	<panel>
+		<field type = "label">
+			Top-left X Framerect
+		</field>
+		<field type="text" size="1" offset="0x40F9BC" />
+		<field type = "label">
+			Top-left Y Framerect
+		</field>
+		<field type="text" size="1" offset="0x40F9C3" />
+		<field type = "label">
+			Bottom-right X Framerect
+		</field>
+		<field type="text" size="2" offset="0x40F9CA" />
+		<field type = "label">
+			Bottom-right Y Framerect
+		</field>
+		<field type="text" size="2" offset="0x40F9D1" />
+		<field type = "label">
+			X Render Position
+		</field>
+		<field type="text" size="1" offset="0x4100B7" />
+		<field type = "label">
+			Y Render Position
+		</field>
+		<field type="text" size="1" offset="0x4100B5" />
+	</panel>
+	<panel>
+		<field type = "label">For the full title screen hack:</field>
+		<field type = "label">Set the framerects to {0,0,320,240} and the render position to {0,0}.</field>
+		<field type = "label">To revert to the vanilla title screen:</field>
+		<field type = "label">Set the framerects to {0,0,144,40} and the render position to {88,40}.</field>
+	</panel>
+</hack>

@@ -1,0 +1,157 @@
+0 - <nothing>
+1 - [blip]
+2 - Message typing
+3 - Bonk
+4 - Weapon switch
+5 - Menu Prompt(?)
+6 - Critter hop
+7 - (Silent?)
+8 - Low Charge sound
+9 - <Nothing?>
+10 - <Nothing?>
+11 - Door
+12 - Block Destroy[*plsh*]
+13 - <Nothing?>
+14 - Get weapon energy
+15 - Quote Jump
+16 - Take damage
+17 - Die
+18 - [Menu?]
+19 - <Nothing?>
+20 - Health/ammo refill
+21 - [bubble]
+22 - Chest Open[Click]
+23 - [Thud]
+24 - [Tap] walking
+25 - Enemy killed?
+26 - Quake[Loud thud]
+27 - Level up!
+28 - Shot Hit[Thump]
+29 - Teleport
+30 - Critter Jump
+31 - [Ting!]
+32 - Polar Star lvl
+33 - Fireball
+34 - Fireball bounce
+35 - Explosion
+36 - <Nothing?>
+37 - NoAmmo[click]
+38 - Get item?
+39 - [*bvng*](em_fire?)
+40 - Water
+41 - Water
+42 - GetMissle[Beep]
+43 - [BEEP] computer
+44 - MissleHit[*KAPOW!*]
+45 - [Ping] Weapon energy bounce
+46 - [*ftt*] IronH Shot
+47 - [*ftt*] (Explosion2?)
+48 - Bubble pop
+49 - Spur level 1
+50 - [Squeek!]
+51 - [Squeal!]
+52 - [ROAR!]
+53 - [*Eyoww*]
+54 - [Thud]
+55 - [Squeek]
+56 - [Splash]
+57 - Little damage sound
+58 - [*chlk*]
+59 - Spur Charge (Lowest)
+60 - Spur charge (lower)
+61 - Spur charge (higher)
+62 - Spur level 2
+63 - Spur level 3
+64 - Spur MAX
+65 - Spur full?
+66 - <Nothing?>
+67 - <Nothing?>
+68 - <Nothing?>
+69 - <Nothing?>
+70 - Tiny explosion
+71 - Med explosion
+72 - Large explosion
+73 - <Nothing?>
+74 - <Nothing?>
+75 - <Nothing?>
+76 - <Nothing?>
+77 - <Nothing?>
+78 - <Nothing?>
+78 - <Nothing?>
+79 - <Nothing?>
+80 - <Nothing?>
+81 - <Nothing?>
+82 - <Nothing?>
+83 - <Nothing?>
+84 - <Nothing?>
+85 - <Nothing?>
+86 - <Nothing?>
+87 - <Nothing?>
+87 - <Nothing?>
+88 - <Nothing?>
+89 - <Nothing?>
+90 - <Nothing?>
+91 - <Nothing?>
+92 - <Nothing?>
+93 - <Nothing?>
+94 - <Nothing?>
+95 - <Nothing?>
+96 - <Nothing?>
+98 - <Nothing?>
+99 - <Nothing?>
+100 - Bubbler Lv3
+101 - Lightning
+102 - Sandcroc Bite
+103 - CurlyCharge
+104 - Hit Invis Block
+105 - Puppy Bark
+106 - Blade Whoosh
+107 - BlockMove
+108 - PowerCritter Jump
+109 - CritterFly
+110 - PowerCritter Fly
+111 - [Thud]
+112 - [BiggerThud]
+113 - [*Pshew*] (Heli?)
+114 - Core Hurt
+115 - Core Thrust
+116 - Core SuperCharge
+117 - Nemesis?
+118 - <Nothing?>
+119 - <Nothing?>
+120 - <Nothing?>
+121 - <Nothing?>
+122 - <Nothing?>
+123 - <Nothing?>
+124 - <Nothing?>
+125 - <Nothing?>
+126 - <Nothing?>
+127 - <Nothing?>
+128 - <Nothing?>
+129 - <Nothing?>
+130 - <Nothing?>
+131 - <Nothing?>
+132 - <Nothing?>
+133 - <Nothing?>
+134 - <Nothing?>
+135 - <Nothing?>
+136 - <Nothing?>
+137 - <Nothing?>
+138 - <Nothing?>
+139 - <Nothing?>
+140 - <Nothing?>
+141 - <Nothing?>
+142 - <Nothing?>
+143 - <Nothing?>
+144 - <Nothing?>
+145 - <Nothing?>
+146 - <Nothing?>
+147 - <Nothing?>
+148 - <Nothing?>
+149 - <Nothing?>
+150 - BASS01
+151 - SNARE01
+152 - HICLOSE
+153 - HIOPEN
+154 - TOM01
+155 - PER01
