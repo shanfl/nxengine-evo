@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
+SET(CMAKE_TOOLCHAIN_FILE "D:/vcpkg/scripts/buildsystems/vcpkg.cmake")
 macro(source_group_by_dir source_files)
     if(MSVC)
         set(sgbd_cur_dir ${CMAKE_CURRENT_SOURCE_DIR})
@@ -24,16 +25,21 @@ set (nx_VERSION_MINOR 1)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
-#find_package(SDL2)
-#find_package(SDL2_ttf)
-#find_package(PNG)
+find_package(SDL2)
+find_package(SDL2_ttf)
+find_package(PNG)
 
-#include_directories(${SDL2_INCLUDE_DIR})
-#include_directories(${SDL2TTF_INCLUDE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/SDL2-2.0.3/include)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lpng)
-LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/SDL2-2.0.3/lib/x86)
-LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/LPNG)
+include_directories(${SDL2_INCLUDE_DIR})
+include_directories(${SDL2TTF_INCLUDE_DIR})
+include_directories(${PNG_INCLUDE_DIR})
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/SDL2-2.0.3/include)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lpng)
+LINK_DIRECTORIES(${SDL2_LIBRARY})
+#LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/LPNG)
+
+MESSAGE(status "${SDL2_LIBRARY} = " ${SDL2_LIBRARY})
+
+MESSAGE(status "PNG LIBRARY  = " ${PNG_LIBRARY})
 
 file(GLOB APP_SOURCES "[a-zA-Z]*.cpp" "[a-zA-Z]*.h")
 file(GLOB TB_SOURCES "TextBox/[a-zA-Z]*.cpp" "TextBox/[a-zA-Z]*.h")
@@ -87,7 +93,7 @@ if(USE_TTF)
 endif(USE_TTF)
 
 add_executable(nx ${SOURCES})
-target_link_libraries(nx SDL2.LIB SDL2MAIN.LIB SDL2_TTF.LIB LIBPNG16D.LIB)
+target_link_libraries(nx ${SDL2_LIBRARY} ${SDL2TTF_LIBRARY}  ${PNG_LIBRARY})  # D:/vcpkg/installed/x86-windows/debug/lib/libpng16d.lib)
 
 add_executable(extract ${EXTR_SOURCES})
 
